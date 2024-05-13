@@ -226,17 +226,17 @@ later(function()
                 }
             }
         },
-        pylsp = {
-            ["pylsp"] = {
-                plugins = {
-                    pycodestyle = {
-                        maxLineLength = 120,
-                        ignore = { "E265", "E722" }
-                    },
-                    mccabe = { enabled = false }
-                }
-            }
-        },
+        -- pylsp = {
+        --     ["pylsp"] = {
+        --         plugins = {
+        --             pycodestyle = {
+        --                 maxLineLength = 120,
+        --                 ignore = { "E265", "E722" }
+        --             },
+        --             mccabe = { enabled = false }
+        --         }
+        --     }
+        -- },
         lua_ls = {
             Lua = {
                 diagnostics = {
@@ -245,6 +245,7 @@ later(function()
             },
         },
         gopls = {},
+        ruff = {},
         -- zls = {},
         -- clangd = {}
     }
