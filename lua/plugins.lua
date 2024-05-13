@@ -256,7 +256,8 @@ later(function()
             },
         },
         gopls = {},
-        ruff = {},
+        -- ruff = {},
+        -- ruff_lsp = {},
         -- zls = {},
         -- clangd = {}
     }
