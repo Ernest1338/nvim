@@ -33,15 +33,6 @@ later(function()
 end)
 
 later(function()
-    -- TODO: Remove once new version drops (includes nix.vim ftplugin)
-    local nix_commentstring = vim.api.nvim_create_augroup("NixCommentString", { clear = true })
-    vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "*.nix",
-        callback = function()
-            vim.api.nvim_buf_set_option(0, "commentstring", "# %s")
-        end,
-        group = nix_commentstring,
-    })
     require("mini.comment").setup({ mappings = { comment_visual = "<leader>/" } })
 end)
 
