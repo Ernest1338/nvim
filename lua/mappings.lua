@@ -65,7 +65,3 @@ map("n", ";", "<cmd> Pick commands <CR>")    -- Quick command
 map({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
 map("t", "<A-Esc>", "<C-\\><C-n>") -- Terminal enter normal mode
 map("t", "<A-k>", "<Up><Cr>")      -- Alt+k to repeat previous command
-
--- git mappings
-map("n", "<leader>gg", "<cmd> Term lazygit <CR>")
-map({ "n", "t" }, "<C-g>", "<cmd> Term lazygit <CR>")
