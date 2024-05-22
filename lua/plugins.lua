@@ -1,12 +1,8 @@
 --[[
 
 TODO:
-- mini completion + mini snippets + mini pairs
-- when new nvim version drops (fork, change name, remove unused things (lsp name), change modes to long names)
-  it probably will still disappear (nvim-cmp problem), might also address format <leader>lf diappearing problem
-  { "nvimdev/whiskyline.nvim", event = "BufEnter", config = true },
-- ? mini terminal
-- ? mini git
+- mini snippets
+- mini terminal
 
 ]]
 --
@@ -19,7 +15,7 @@ now(function() require("mini.starter").setup() end)
 
 now(function()
     add("Ernest1338/egcolors.vim")
-    vim.cmd("colorscheme monokai-pro")
+    vim.cmd("colorscheme tokyonight")
 end)
 
 now(function()
@@ -60,7 +56,6 @@ later(function()
             wrap_goto = true
         }
     })
-    vim.keymap.set("n", "<leader>go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>") -- Toggle overlay
 end)
 
 later(function()
@@ -140,11 +135,12 @@ later(function()
         }
     }
     local normal = vim.api.nvim_get_hl(0, { name = "Normal" })
-    vim.api.nvim_set_hl(0, 'MiniHipatternsFix', { fg = "#ffffff", bg = "#ff5f59", bold = true })
-    vim.api.nvim_set_hl(0, "MiniHipatternsWarning", { fg = normal["bg"], bg = "#e0af68", bold = true })
-    vim.api.nvim_set_hl(0, 'MiniHipatternsTodo', { fg = normal["bg"], bg = "#0db9d7", bold = true })
-    vim.api.nvim_set_hl(0, 'MiniHipatternsNote', { fg = normal["bg"], bg = "#10b981", bold = true })
-    vim.api.nvim_set_hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
+    local hl = vim.api.nvim_set_hl
+    hl(0, 'MiniHipatternsFix', { fg = "#ffffff", bg = "#ff5f59", bold = true })
+    hl(0, "MiniHipatternsWarning", { fg = normal["bg"], bg = "#e0af68", bold = true })
+    hl(0, 'MiniHipatternsTodo', { fg = normal["bg"], bg = "#0db9d7", bold = true })
+    hl(0, 'MiniHipatternsNote', { fg = normal["bg"], bg = "#10b981", bold = true })
+    hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
 end)
 
 later(function()
@@ -158,7 +154,6 @@ later(function() require("mini.pairs").setup({ modes = { insert = true, command 
 later(function()
     require("mini.git").setup()
 
-    -- git mappings
     local map = vim.keymap.set
     map("n", "<leader>gg", "<cmd> Term lazygit <CR>")
     map({ "n", "t" }, "<C-g>", "<cmd> Term lazygit <CR>")
@@ -167,10 +162,13 @@ later(function()
     map("n", "<leader>gd", "<cmd> Git diff <CR>")
     map("n", "<leader>gp", "<cmd> Git pull <CR>")
     map("n", "<leader>gP", "<cmd> Git push <CR>")
+    map("n", "<leader>gu", "<cmd> Git restore --staged % <CR>")
+    map("n", "<leader>gU", "<cmd> Git restore --staged . <CR>")
     map("n", "<leader>gl", "<cmd> Git log --oneline <CR>")
     map("n", "<leader>gL", "<cmd> Git log --oneline --follow -- % <CR>")
-    map("n", "<leader>gs", "<cmd> Git status <CR>")
-    map("n", "<leader>gS", "<cmd> lua MiniGit.show_at_cursor() <CR>")
+    map("n", "<leader>gs", "<cmd> lua MiniGit.show_at_cursor() <CR>")
+    map("n", "<leader>gS", "<cmd> Git status <CR>")
+    map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
 end)
 
 -- later(function() require("mini.indentscope").setup() end)
@@ -218,7 +216,6 @@ later(function()
 
         -- LSP mappings
         local map = vim.keymap.set
-
         map("n", "K", function()
             local line_diagnostics = vim.lsp.diagnostic.get_line_diagnostics()
             if vim.tbl_isempty(line_diagnostics) then
