@@ -21,7 +21,8 @@ end)
 now(function()
     -- add("Ernest1338/eg-statusline.nvim")
     -- require("statusline").setup()
-    require("mini.statusline").setup()
+    local active = require("mini.statusline").active
+    require("mini.statusline").setup({ content = { inactive = active } })
 end)
 
 later(function()
