@@ -21,7 +21,7 @@ end)
 now(function()
     -- add("Ernest1338/eg-statusline.nvim")
     -- require("statusline").setup()
-    local active = require("mini.statusline").active
+    local active = require("mini.statusline").active -- workaround for termplug when process exits
     require("mini.statusline").setup({ content = { inactive = active } })
 end)
 
