@@ -155,6 +155,7 @@ later(function() require("mini.pairs").setup({ modes = { insert = true, command 
 later(function()
     require("mini.git").setup()
 
+    -- Git mappings
     local map = vim.keymap.set
     map("n", "<leader>gg", "<cmd> Term lazygit <CR>")
     map({ "n", "t" }, "<C-g>", "<cmd> Term lazygit <CR>")
@@ -199,13 +200,13 @@ later(function() require("mini.extra").setup() end)
 
 later(function() add("nvim-tree/nvim-web-devicons") end)
 
-later(function()
-    add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
-    require("nvim-treesitter.configs").setup {
-        highlight = { enable = true, },
-        indent = { enable = true },
-    }
-end)
+-- later(function()
+--     add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
+--     require("nvim-treesitter.configs").setup {
+--         highlight = { enable = true, },
+--         indent = { enable = true },
+--     }
+-- end)
 
 later(function()
     add("neovim/nvim-lspconfig")
