@@ -200,13 +200,13 @@ later(function() require("mini.extra").setup() end)
 
 later(function() add("nvim-tree/nvim-web-devicons") end)
 
--- later(function()
---     add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
---     require("nvim-treesitter.configs").setup {
---         highlight = { enable = true, },
---         indent = { enable = true },
---     }
--- end)
+later(function()
+    add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
+    require("nvim-treesitter.configs").setup {
+        highlight = { enable = true, },
+        indent = { enable = true },
+    }
+end)
 
 later(function()
     add("neovim/nvim-lspconfig")
