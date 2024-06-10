@@ -64,4 +64,4 @@ map("n", ";", "<cmd> Pick commands <CR>")    -- Quick command
 -- terminal mappings
 map({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
 map("t", "<A-Esc>", "<C-\\><C-n>") -- Terminal enter normal mode
-map("t", "<A-o>", "<Up><Cr>")      -- Alt+o to repeat previous command
+-- map("t", "<A-o>", "<Up><Cr>")      -- Alt+o to repeat previous command (moved to alacritty config)
