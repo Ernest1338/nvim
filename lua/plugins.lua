@@ -152,6 +152,8 @@ end)
 
 later(function() require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } }) end)
 
+later(function() require("mini.icons").setup() end)
+
 later(function()
     require("mini.git").setup()
 
@@ -197,8 +199,6 @@ end)
 
 -- Needs to be after every other mini module, I think
 later(function() require("mini.extra").setup() end)
-
-later(function() add("nvim-tree/nvim-web-devicons") end)
 
 later(function()
     add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
