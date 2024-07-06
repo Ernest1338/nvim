@@ -66,16 +66,6 @@ vim.o.termguicolors = true
 vim.o.cmdheight = 0            -- switching to eg-statusline fixed the statusline disapearing problem
 vim.opt.shortmess:append("cI") -- might be needed for proper cmdheight + don't show intro message
 
--- neovide configs
--- vim.g.neovide_remember_window_size = true
--- vim.g.neovide_remember_window_position = true
--- vim.g.neovide_cursor_antialiasing = true
--- vim.g.neovide_refresh_rate = 75
--- vim.g.neovide_fullscreen = true
-
--- gui font
---vim.o.guifont="Hack:h12"
-
 -- Highlight on yank
 local yank_grp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -108,41 +98,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 --     desc = 'Update tabline based on the number of listed buffers',
 -- })
 
--- NOTE: I DONT KNOW IF THE vim.schedule IS BETTER OR WORSE HERE
--- auto format on write
+-- NOTE: auto format on write
 -- local format_grp = vim.api.nvim_create_augroup("FormatOnSave", { clear = true })
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --     callback = function()
---         --vim.schedule(function()
 --         vim.lsp.buf.format({ async = true, timeout = 2000 })
---         --end)
 --     end,
 --     group = format_grp,
 -- })
 
--- highlight trailing spaces
+-- NOTE: highlight trailing spaces
 -- vim.cmd([[hi EoLSpace ctermbg=238 guibg=#802020]])
 -- vim.cmd([[match EoLSpace /\s\+$/]])
-
--- NOTE: playing around with creating a dashboard
--- local dashboard_grp = vim.api.nvim_create_augroup("Dashboard", { clear = true })
--- vim.api.nvim_create_autocmd("VimEnter", {
---     callback = function()
---         vim.api.nvim_buf_set_lines(0, 0, -1, false, {
---             "Hello!",
---             "This is a dashboard!"
---         })
---     end,
---     group = dashboard_grp,
--- })
--- local buf = vim.api.nvim_create_buf(false, true)
--- vim.api.nvim_buf_set_name(buf, "my_buffer_name")
--- vim.api.nvim_buf_set_lines(buf, 0, -1, true, {"Hello, world!"})
---
--- local function delete_buffer()
---   vim.api.nvim_buf_delete(buf, {force = true})
--- end
---
--- vim.cmd(string.format("autocmd BufLeave <buffer=%d> lua vim.api.nvim_buf_delete(%d, {force = true})", buf, buf))
---
--- vim.cmd(string.format("buffer %d", buf))
