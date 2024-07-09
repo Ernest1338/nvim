@@ -5,7 +5,7 @@ local servers = {
         root_files = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
         settings = {
             Lua = {
-                runtime = { version = 'LuaJIT' },
+                runtime = { version = "LuaJIT" },
                 workspace = {
                     checkThirdParty = false,
                     library = { vim.env.VIMRUNTIME }
@@ -99,6 +99,30 @@ local function setup_lsp(name, pattern, cmd, root_files, settings)
         end
     })
 end
+
+vim.api.nvim_create_user_command("LspStop", function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = current_buf }))
+end, {
+    desc = "Manually stops the given language client(s)",
+    nargs = "?",
+})
+
+vim.api.nvim_create_user_command("LspRestart", function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = current_buf }))
+    vim.cmd(":edit")
+end, {
+    desc = "Restart LSP connected to current buffer",
+    nargs = "?",
+})
+
+vim.api.nvim_create_user_command("LspStart", function()
+    print("TODO")
+end, {
+    desc = "TODO",
+    nargs = "?",
+})
 
 for name, config in pairs(servers) do
     setup_lsp(name, config.pattern, config.cmd, config.root_files, config.settings)
