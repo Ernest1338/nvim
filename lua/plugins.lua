@@ -33,14 +33,18 @@ later(function()
     require("mini.comment").setup({ mappings = { comment_visual = "<leader>/" } })
 end)
 
-later(function() require("mini.jump2d").setup({ mappings = { start_jumping = "<leader>j" }, view = { n_steps_ahead = 1 } }) end)
+later(function()
+    require("mini.jump2d").setup({ mappings = { start_jumping = "<leader>j" }, view = { n_steps_ahead = 1 } })
+end)
 
 later(function()
     require("mini.files").setup({ mappings = { go_in_plus = "<CR>" }, options = { permanent_delete = false } })
     map("n", "<C-f>", "<Cmd>lua if not MiniFiles.close() then MiniFiles.open() end<CR>") -- Toggle file tree
 end)
 
-later(function() require("mini.move").setup({ mappings = { left = "H", right = "L", down = "J", up = "K" } }) end)
+later(function()
+    require("mini.move").setup({ mappings = { left = "H", right = "L", down = "J", up = "K" } })
+end)
 
 later(function()
     require("mini.diff").setup({
@@ -149,7 +153,9 @@ later(function()
     vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
 end)
 
-later(function() require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } }) end)
+later(function()
+    require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
+end)
 
 later(function() require("mini.icons").setup() end)
 
