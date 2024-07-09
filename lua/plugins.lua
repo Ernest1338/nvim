@@ -111,7 +111,7 @@ later(function()
     MiniPick.registry.filetype = function()
         local items = vim.fn.getcompletion("", "filetype")
         local filetype = MiniPick.start({ source = { items = items } })
-        if filetype ~= nil then vim.api.nvim_buf_set_option(0, 'filetype', filetype) end
+        if filetype ~= nil then vim.api.nvim_set_option_value('filetype', filetype, { }) end
     end
     MiniPick.registry.colorscheme = function()
         local items = vim.fn.getcompletion("", "color")
@@ -180,85 +180,13 @@ end)
 -- Needs to be after every other mini module, I think
 later(function() require("mini.extra").setup() end)
 
-later(function()
-    add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
-    require("nvim-treesitter.configs").setup {
-        highlight = { enable = true, },
-        indent = { enable = true },
-    }
-end)
-
-later(function()
-    add("neovim/nvim-lspconfig")
-    local lspconfig = require("lspconfig")
-
-    local on_attach = function(client, _) -- _ = bufnr
-        -- disabled, because it breaks highlighting and makes it slugish
-        client.server_capabilities.semanticTokensProvider = nil
-
-        map("n", "K", function()
-            local line_diagnostics = vim.lsp.diagnostic.get_line_diagnostics()
-            if vim.tbl_isempty(line_diagnostics) then
-                vim.lsp.buf.hover()
-            else
-                vim.diagnostic.open_float()
-            end
-        end)                                                                                          -- LSP button
-        map("n", "<leader>lf", "<cmd> lua vim.lsp.buf.format({ async = true, timeout = 2000 }) <CR>") -- Format file
-        map("n", "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <CR>")                            -- LSP Code actions
-        map("n", "<leader>ld", "<cmd> Pick diagnostic <CR>")                                          -- LSP Diagnostics
-        map("n", "<leader>ls", "<cmd> Pick lsp scope='document_symbol' <CR>")                         -- LSP Symbols
-        map("n", "<leader>lr", "<cmd> lua vim.lsp.buf.rename() <CR>")                                 -- Rename
-        map("n", "<C-k>", "<cmd> lua vim.lsp.buf.hover() <CR>")                                       -- LSP show hover information
-        map("n", "gd", "<cmd> Pick lsp scope='definition' <CR>")                                      -- Go to defifinition
-        map("n", "gD", "<cmd> Pick lsp scope='references' <CR>")                                      -- Go to references
-    end
-
-    local servers = {
-        rust_analyzer = {
-            ["rust_analyzer"] = {
-                diagnostics = {
-                    enable = true,
-                    disabled = { "unresolved-proc-macro" },
-                    --enableExperimental = true,
-                }
-            }
-        },
-        pylsp = {
-            ["pylsp"] = {
-                plugins = {
-                    pycodestyle = {
-                        maxLineLength = 120,
-                        ignore = { "E265", "E722" }
-                    },
-                    mccabe = { enabled = false }
-                }
-            }
-        },
-        lua_ls = {
-            Lua = {
-                diagnostics = {
-                    globals = { "vim", "jit", "MiniPick", "MiniDeps", "MiniFiles" },
-                },
-            },
-        },
-        gopls = {},
-        -- ruff = {},
-        -- ruff_lsp = {},
-        -- zls = {},
-        -- clangd = {}
-    }
-
-    for server, settings in pairs(servers) do
-        lspconfig[server].setup {
-            on_attach = on_attach,
-            settings = settings
-        }
-    end
-
-    -- Auto start lsp on single file sessions
-    vim.cmd("LspStart")
-end)
+-- later(function()
+--     add({ source = "nvim-treesitter/nvim-treesitter", hooks = { post_checkout = function() vim.cmd('TSUpdate') end } })
+--     require("nvim-treesitter.configs").setup {
+--         highlight = { enable = true, },
+--         indent = { enable = true },
+--     }
+-- end)
 
 --
 -- [[ LOCAL PLUGIN DEV ]] --

@@ -41,3 +41,4 @@ require("mappings")
 
 require("mini.deps").setup({ job = { n_threads = 10 }, path = { package = path_package } })
 require("plugins")
+require("lsp")
