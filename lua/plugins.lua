@@ -12,12 +12,7 @@ local map = vim.keymap.set
 
 now(function() require("mini.tabline").setup() end)
 
-now(function() require("mini.starter").setup() end)
-
-now(function()
-    add("Ernest1338/egcolors.vim")
-    vim.cmd("colorscheme tokyonight")
-end)
+-- now(function() require("mini.starter").setup() end)
 
 now(function()
     local active = require("mini.statusline").active -- workaround for termplug when process exits
@@ -28,6 +23,8 @@ later(function()
     add("Ernest1338/termplug.nvim")
     require("termplug").setup()
 end)
+
+later(function() require("mini.icons").setup() end)
 
 later(function()
     require("mini.comment").setup({ mappings = { comment_visual = "<leader>/" } })
@@ -111,12 +108,12 @@ later(function()
     MiniPick.registry.filetype = function()
         local items = vim.fn.getcompletion("", "filetype")
         local filetype = MiniPick.start({ source = { items = items } })
-        if filetype ~= nil then vim.api.nvim_set_option_value('filetype', filetype, { }) end
+        if filetype ~= nil then vim.api.nvim_set_option_value('filetype', filetype, {}) end
     end
     MiniPick.registry.colorscheme = function()
         local items = vim.fn.getcompletion("", "color")
         local preview = function(_, item) vim.cmd("colorscheme " .. item) end
-        local colorscheme = MiniPick.start({ source = { items = items, preview = preview } })
+        local colorscheme = MiniPick.start({ source = { items = items, preview = preview }, window = { config = { width = 20, col = vim.o.columns } } })
         if colorscheme ~= nil then vim.cmd("colorscheme " .. colorscheme) end
     end
 
@@ -157,8 +154,6 @@ later(function()
     require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
 end)
 
-later(function() require("mini.icons").setup() end)
-
 later(function()
     require("mini.git").setup()
     map("n", "<leader>gg", "<cmd> Term lazygit <CR>")
@@ -194,27 +189,5 @@ later(function() require("mini.extra").setup() end)
 
 local function runtime_add(path) vim.o.runtimepath = vim.o.runtimepath .. "," .. path end
 
--- runtime_add("~/Repos/lua-fun/NvimPlugs/doctor")
-
--- runtime_add("~/Repos/lua-fun/NvimPlugs/wordcount")
-
--- runtime_add("~/Repos/lua-fun/NvimPlugs/typing-test")
--- later(function() require("typing-test").setup() end)
-
--- runtime_add("~/Repos/egcolors.vim")
--- later(function() vim.cmd("colorscheme tokyonight") end)
-
 -- runtime_add("~/Repos/termplug.nvim")
 -- later(function() require("termplug").setup() end)
-
--- runtime_add("~/Repos/eg-statusline.nvim")
--- later(function() require("statusline").setup() end)
-
--- runtime_add("~/Repos/mini.pickaproject")
--- later(function() require("mini.pickaproject").setup() end)
-
--- runtime_add("~/Repos/training.nvim")
--- later(function() require("training").setup() end)
-
--- runtime_add("~/Repos/lua-fun/NvimPlugs/startupscreen.nvim")
--- later(function() require("startupscreen").setup() end)

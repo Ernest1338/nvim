@@ -1,9 +1,0 @@
-return {
-  ["egcolors.vim"] = "4f047d3e4c8b383fc6b462d86d06f2fb6af8b6de",
-  ["mini.nvim"] = "e94945129780fa5b43447ecc0a4b0273892043e3",
-  ["mini.pickaproject"] = "5d273d7b1f0aa282cda0cae431fd4c4b9e23cbac",
-  ["nvim-lspconfig"] = "0b8165cf95806bc4bb8f745bb0c92021b2ed4b98",
-  ["nvim-treesitter"] = "73fb37ed77b18ac357ca8e6e35835a8db6602332",
-  ["nvim-web-devicons"] = "e37bb1feee9e7320c76050a55443fa843b4b6f83",
-  ["termplug.nvim"] = "4ca5da4f6ab031ef2a32b56d69626fadb259cde4"
-}

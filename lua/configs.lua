@@ -1,3 +1,6 @@
+-- colorscheme
+vim.cmd("colorscheme gruvbox")
+
 -- relative numbers
 vim.wo.number = true
 -- vim.wo.relativenumber = true
@@ -66,24 +69,33 @@ vim.o.termguicolors = true
 vim.o.cmdheight = 0            -- switching to eg-statusline fixed the statusline disapearing problem
 vim.opt.shortmess:append("cI") -- might be needed for proper cmdheight + don't show intro message
 
+local new_augrp = function(name) vim.api.nvim_create_augroup(name, { clear = true }) end
+local new_autocmd = vim.api.nvim_create_autocmd
+
 -- Highlight on yank
-local yank_grp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank({ timeout = 200 })
-    end,
+local yank_grp = new_augrp("YankHighlight")
+new_autocmd("TextYankPost", {
+    callback = function() vim.highlight.on_yank({ timeout = 200 }) end,
     group = yank_grp,
 })
 
 -- Auto remove trailing spaces on write
-local trailing_grp = vim.api.nvim_create_augroup("TrailingSpaces", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
+local trailing_grp = new_augrp("TrailingSpaces")
+new_autocmd("BufWritePre", {
     callback = function()
         local original_cursor = vim.api.nvim_win_get_cursor(0)
         vim.cmd([[keeppatterns %s/\s\+$//e]])
         vim.api.nvim_win_set_cursor(0, original_cursor)
     end,
     group = trailing_grp,
+})
+
+-- Override filetype for .blade.php files to php
+local bladephp_grp = new_augrp("BladePHP")
+new_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.blade.php",
+    callback = function() vim.bo.filetype = "php" end,
+    group = bladephp_grp,
 })
 
 -- NOTE: Hide the tab bar when only one buffer exists
@@ -106,7 +118,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 --     end,
 --     group = format_grp,
 -- })
-
--- NOTE: highlight trailing spaces
--- vim.cmd([[hi EoLSpace ctermbg=238 guibg=#802020]])
--- vim.cmd([[match EoLSpace /\s\+$/]])
