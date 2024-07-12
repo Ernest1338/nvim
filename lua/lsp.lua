@@ -72,7 +72,10 @@ local function start_lsp(name, cmd, root_files, settings)
         on_attach = on_attach,
         on_init = on_init
     })
-    assert(client)
+    if client == nil then
+        vim.notify("Failed to start LSP server")
+        return
+    end
 
     vim.lsp.buf_attach_client(0, client)
 end
