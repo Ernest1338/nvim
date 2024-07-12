@@ -60,7 +60,4 @@ map("n", "N", "Nzzzv")                       -- Center backwards search
 map("v", "y", "ygv<esc>")                    -- Prevent cursor jump when copying
 map("n", ";", "<cmd> Pick commands <CR>")    -- Quick command
 -- map("n", "<C-e>", function() vim.print(vim.treesitter.get_captures_at_cursor(0)) end)            -- Show highlight group at cursor
-
--- terminal mappings
-map({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
-map("t", "<A-Esc>", "<C-\\><C-n>") -- Terminal enter normal mode
+map("t", "<A-Esc>", "<C-\\><C-n>")           -- Terminal enter normal mode

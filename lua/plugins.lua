@@ -22,6 +22,7 @@ end)
 later(function()
     add("Ernest1338/termplug.nvim")
     require("termplug").setup()
+    map({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
 end)
 
 later(function() require("mini.icons").setup() end)
