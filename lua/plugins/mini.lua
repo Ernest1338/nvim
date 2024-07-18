@@ -10,35 +10,27 @@ TODO:
 local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 local map = vim.keymap.set
 
-now(function() require("mini.tabline").setup() end)
-
--- now(function() require("mini.starter").setup() end)
-
 now(function()
+    require("mini.tabline").setup()
+
+    -- require("mini.starter").setup()
+
     local active = require("mini.statusline").active -- workaround for termplug when process exits
     require("mini.statusline").setup({ content = { inactive = active } })
 end)
 
-later(function() require("mini.icons").setup() end)
-
 later(function()
+    require("mini.icons").setup()
+
     require("mini.comment").setup({ mappings = { comment_visual = "<leader>/" } })
-end)
 
-later(function()
     require("mini.jump2d").setup({ mappings = { start_jumping = "<leader>j" }, view = { n_steps_ahead = 1 } })
-end)
 
-later(function()
     require("mini.files").setup({ mappings = { go_in_plus = "<CR>" }, options = { permanent_delete = false } })
     map("n", "<C-f>", "<Cmd>lua if not MiniFiles.close() then MiniFiles.open() end<CR>") -- Toggle file tree
-end)
 
-later(function()
     require("mini.move").setup({ mappings = { left = "H", right = "L", down = "J", up = "K" } })
-end)
 
-later(function()
     require("mini.diff").setup({
         view = {
             style = 'sign',
@@ -52,9 +44,7 @@ later(function()
             wrap_goto = true
         }
     })
-end)
 
-later(function()
     -- require("mini.notify").setup({
     --     content = {
     --         format = function(notif) return notif.msg end,
@@ -69,9 +59,7 @@ later(function()
     --     }
     -- })
     vim.notify = require("mini.notify").make_notify()
-end)
 
-later(function()
     require("mini.pick").setup({
         mappings = {
             move_up = "<C-k>",
@@ -114,9 +102,7 @@ later(function()
 
     add("Ernest1338/mini.pickaproject")
     require("mini.pickaproject").setup()
-end)
 
-later(function()
     local hipatterns = require("mini.hipatterns")
     hipatterns.setup {
         highlighters = {
@@ -137,19 +123,13 @@ later(function()
     hl(0, 'MiniHipatternsTodo', { fg = normal["bg"], bg = "#0db9d7", bold = true })
     hl(0, 'MiniHipatternsNote', { fg = normal["bg"], bg = "#10b981", bold = true })
     hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
-end)
 
-later(function()
     require("mini.completion").setup()
     vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
     vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
-end)
 
-later(function()
     require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
-end)
 
-later(function()
     require("mini.git").setup()
     map("n", "<leader>gg", "<cmd> Term lazygit <CR>")
     map({ "n", "t" }, "<C-g>", "<cmd> Term lazygit <CR>")
@@ -165,7 +145,7 @@ later(function()
     map("n", "<leader>gs", "<cmd> lua MiniGit.show_at_cursor() <CR>")
     map("n", "<leader>gS", "<cmd> Git status <CR>")
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
-end)
 
--- Needs to be after every other mini module, I think
-later(function() require("mini.extra").setup() end)
+    -- Needs to be after every other mini module, I think
+    require("mini.extra").setup()
+end)

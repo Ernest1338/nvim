@@ -1,5 +1,5 @@
 -- enable the experimental lua-loader
-vim.loader.enable()
+pcall(function() vim.loader.enable() end)
 
 local path_package = vim.fn.stdpath("data") .. "/site/"
 
