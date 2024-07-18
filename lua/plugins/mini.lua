@@ -100,9 +100,6 @@ later(function()
         if colorscheme ~= nil then vim.cmd("colorscheme " .. colorscheme) end
     end
 
-    add("Ernest1338/mini.pickaproject")
-    require("mini.pickaproject").setup()
-
     local hipatterns = require("mini.hipatterns")
     hipatterns.setup {
         highlighters = {

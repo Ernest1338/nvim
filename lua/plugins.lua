@@ -4,6 +4,7 @@
 
 require("plugins.mini")
 require("plugins.termplug")
+require("plugins.mini-pickaproject")
 -- require("plugins.nvim-treesitter")
 
 --
