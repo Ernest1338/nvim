@@ -18,6 +18,9 @@ vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.expandtab = true
 
+-- no text wrap
+-- vim.o.wrap = false
+
 -- scroll when the cursor is 4 line from the bottom
 vim.o.scrolloff = 4
 
