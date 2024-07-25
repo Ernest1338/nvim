@@ -46,12 +46,12 @@ local servers = {
             }
         }
     },
-    -- typescript = {
-    --     pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-    --     cmd = { "typescript-language-server", "--stdio" },
-    --     root_files = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-    --     settings = {}
-    -- },
+    typescript = {
+        pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+        cmd = { "typescript-language-server", "--stdio" },
+        root_files = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+        settings = {}
+    },
     -- vue = {
     --     pattern = { "vue" },
     --     cmd = { "vue-language-server", "--stdio" },
