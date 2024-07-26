@@ -138,8 +138,9 @@ vim.api.nvim_create_user_command("LspInfo", function()
     if #active == 0 then
         vim.print("No LSP servers active")
     else
+        local active_num = #active
         active = active[1]
-        vim.print("Active LSP server: [" .. active.config.name .. "] " .. active.config.cmd[1])
+        vim.print("Active LSP server (" .. active_num .. " server/s) => [" .. active.config.name .. "] " .. active.config.cmd[1])
     end
     vim.print("\nConfigured LSP servers:")
     for name, config in pairs(servers) do

@@ -7,6 +7,9 @@ require("plugins.termplug")
 require("plugins.mini-pickaproject")
 -- require("plugins.nvim-treesitter")
 -- require("plugins.cube-timer")
+-- require("plugins.luasnip")
+-- require("plugins.nvim-autopairs")
+-- require("plugins.nvim-cmp")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --

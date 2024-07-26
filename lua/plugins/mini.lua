@@ -121,6 +121,7 @@ later(function()
     hl(0, 'MiniHipatternsNote', { fg = normal["bg"], bg = "#10b981", bold = true })
     hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
 
+    -- TODO: switch to mini.completion and mini.pairs when either mini.completion update drops or neovim/pull/25541 lands
     require("mini.completion").setup()
     vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
     vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })

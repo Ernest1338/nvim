@@ -39,7 +39,7 @@ later(function()
             },
         },
         gopls = {},
-        -- tsserver = {},
+        tsserver = {},
         -- volar = {},
         -- ruff = {},
         -- ruff_lsp = {},
