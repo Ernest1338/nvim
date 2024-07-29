@@ -5,11 +5,16 @@
 require("plugins.mini")
 require("plugins.termplug")
 require("plugins.mini-pickaproject")
+
+require("plugins.luasnip")
+require("plugins.nvim-autopairs")
+require("plugins.nvim-cmp")
 -- require("plugins.nvim-treesitter")
 -- require("plugins.cube-timer")
--- require("plugins.luasnip")
--- require("plugins.nvim-autopairs")
--- require("plugins.nvim-cmp")
+-- require("plugins.nvim-snippets")
+-- require("plugins.indentmini")
+-- require("plugins.no-neck-pain")
+-- require("plugins.dashboard")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --

@@ -43,5 +43,5 @@ require("mini.deps").setup({ job = { n_threads = 5 }, path = { package = path_pa
 require("plugins")
 
 -- LSP setup (choose either one of those)
-require("lsp.custom-setup")
--- require("lsp.lspconfig")
+-- require("lsp.custom-setup")
+require("lsp.lspconfig")

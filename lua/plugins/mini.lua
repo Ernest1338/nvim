@@ -7,7 +7,7 @@ TODO:
 ]]
 --
 
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local now, later = MiniDeps.now, MiniDeps.later
 local map = vim.keymap.set
 
 now(function()
@@ -122,11 +122,11 @@ later(function()
     hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
 
     -- TODO: switch to mini.completion and mini.pairs when either mini.completion update drops or neovim/pull/25541 lands
-    require("mini.completion").setup()
-    vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
-    vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
-
-    require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
+    -- require("mini.completion").setup()
+    -- vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
+    -- vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
+    --
+    -- require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
 
     require("mini.git").setup()
     map("n", "<leader>gg", "<cmd> Term lazygit <CR>")

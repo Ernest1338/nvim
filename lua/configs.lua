@@ -1,5 +1,5 @@
 -- colorscheme
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme kanagawa")
 
 -- relative numbers
 vim.wo.number = true

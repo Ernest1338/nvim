@@ -1,6 +1,6 @@
 local servers = {
     lua = {
-        pattern = "lua",
+        filetypes = { "lua" },
         cmd = { "lua-language-server" },
         root_files = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
         settings = {
@@ -17,7 +17,7 @@ local servers = {
         }
     },
     rust = {
-        pattern = "rust",
+        filetypes = { "rust" },
         cmd = { "rust-analyzer" },
         root_files = { "Cargo.toml", "rust-project.json", ".git" },
         settings = {
@@ -31,7 +31,7 @@ local servers = {
         }
     },
     python = {
-        pattern = "python",
+        filetypes = { "python" },
         cmd = { "pylsp" },
         root_files = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
         settings = {
@@ -47,19 +47,19 @@ local servers = {
         }
     },
     typescript = {
-        pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+        filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
         cmd = { "typescript-language-server", "--stdio" },
         root_files = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
         settings = {}
     },
     -- vue = {
-    --     pattern = { "vue" },
+    --     filetypes = { "vue" },
     --     cmd = { "vue-language-server", "--stdio" },
     --     root_files = { "node_modules", "package.json", ".git" },
     --     settings = {}
     -- },
     go = {
-        pattern = "go",
+        filetypes = { "go" },
         cmd = { "gopls" },
         root_files = { "go.work", "go.mod", ".git" },
         settings = {}
@@ -92,8 +92,9 @@ local function start_lsp(name, cmd, root_files, settings)
     vim.lsp.buf_attach_client(0, client)
 end
 
-local function setup_lsp(name, pattern, cmd, root_files, settings)
+local function setup_lsp(group, name, pattern, cmd, root_files, settings)
     vim.api.nvim_create_autocmd("FileType", {
+        group = group,
         pattern = pattern,
         callback = function()
             start_lsp(name, cmd, root_files, settings)
@@ -140,7 +141,8 @@ vim.api.nvim_create_user_command("LspInfo", function()
     else
         local active_num = #active
         active = active[1]
-        vim.print("Active LSP server (" .. active_num .. " server/s) => [" .. active.config.name .. "] " .. active.config.cmd[1])
+        vim.print("Active LSP server (" ..
+            active_num .. " server/s) => [" .. active.config.name .. "] " .. active.config.cmd[1])
     end
     vim.print("\nConfigured LSP servers:")
     for name, config in pairs(servers) do
@@ -159,6 +161,7 @@ end, {
     nargs = "?",
 })
 
+local group = vim.api.nvim_create_augroup("UserLspStart", { clear = true })
 for name, config in pairs(servers) do
-    setup_lsp(name, config.pattern, config.cmd, config.root_files, config.settings)
+    setup_lsp(group, name, config.filetypes, config.cmd, config.root_files, config.settings)
 end
