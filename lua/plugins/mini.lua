@@ -21,6 +21,7 @@ end)
 
 later(function()
     require("mini.icons").setup()
+    MiniIcons.tweak_lsp_kind("prepend")
 
     require("mini.comment").setup({ mappings = { comment_visual = "<leader>/" } })
 
