@@ -93,14 +93,6 @@ new_autocmd("BufWritePre", {
     group = trailing_grp,
 })
 
--- Override filetype for .blade.php files to php
-local bladephp_grp = new_augrp("BladePHP")
-new_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "*.blade.php",
-    callback = function() vim.bo.filetype = "php" end,
-    group = bladephp_grp,
-})
-
 -- NOTE: Hide the tab bar when only one buffer exists
 -- vim.api.nvim_create_autocmd('BufEnter', {
 --     callback = vim.schedule_wrap(function()
