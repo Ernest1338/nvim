@@ -15,6 +15,11 @@ require("plugins.nvim-cmp")
 -- require("plugins.indentmini")
 -- require("plugins.no-neck-pain")
 -- require("plugins.dashboard")
+-- require("plugins.neogit")
+-- require("plugins.telescope")
+-- require("plugins.fzf")
+-- require("plugins.nvim-tree")
+-- require("plugins.mason")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
