@@ -20,6 +20,9 @@ require("plugins.nvim-cmp")
 -- require("plugins.fzf")
 -- require("plugins.nvim-tree")
 -- require("plugins.mason")
+-- require("plugins.coq-nvim")
+-- require("plugins.autocomplete-nvim")
+-- require("plugins.epo-nvim")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --

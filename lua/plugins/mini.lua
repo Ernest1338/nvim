@@ -15,8 +15,8 @@ now(function()
 
     -- require("mini.starter").setup()
 
-    local active = require("mini.statusline").active -- workaround for termplug when process exits
-    require("mini.statusline").setup({ content = { inactive = active } })
+    local statusline = require("mini.statusline")
+    statusline.setup({ content = { inactive = statusline.active } }) -- workaround for termplug when process exits
 end)
 
 later(function()
