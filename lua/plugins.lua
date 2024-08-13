@@ -23,6 +23,7 @@ require("plugins.nvim-cmp")
 -- require("plugins.coq-nvim")
 -- require("plugins.autocomplete-nvim")
 -- require("plugins.epo-nvim")
+-- require("plugins.undotree")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
