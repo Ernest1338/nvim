@@ -145,6 +145,10 @@ later(function()
     map("n", "<leader>gS", "<cmd> Git status <CR>")
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
 
+    -- require("mini.surround").setup()
+
+    -- require("mini.animate").setup()
+
     -- Needs to be after every other mini module, I think
     require("mini.extra").setup()
 end)

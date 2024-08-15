@@ -39,7 +39,7 @@ end
 require("configs")
 require("mappings")
 
-require("mini.deps").setup({ job = { n_threads = 5 }, path = { package = path_package } })
+require("mini.deps").setup({ job = { n_threads = 10 }, path = { package = path_package } })
 require("plugins")
 
 -- LSP setup (choose either one of those)

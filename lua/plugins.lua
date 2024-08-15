@@ -24,6 +24,9 @@ require("plugins.nvim-cmp")
 -- require("plugins.autocomplete-nvim")
 -- require("plugins.epo-nvim")
 -- require("plugins.undotree")
+-- require("plugins.vim-fugitive")
+-- require("plugins.vim-smooth-scroll")
+-- require("plugins.git-blame")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
