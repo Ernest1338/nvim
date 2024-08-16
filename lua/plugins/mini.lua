@@ -149,6 +149,27 @@ later(function()
 
     -- require("mini.animate").setup()
 
+    -- require("mini.cursorword").setup({ delay = 500 })
+
+    -- local minimap = require("mini.map")
+    -- minimap.setup({
+    --     integrations = {
+    --         minimap.gen_integration.builtin_search(),
+    --         minimap.gen_integration.diff(),
+    --         minimap.gen_integration.diagnostic(),
+    --     },
+    -- })
+    -- -- Show on startup
+    -- minimap.toggle()
+
+    -- require("mini.jump").setup()
+
+    -- require("mini.trailspace").setup()
+
+    -- require("mini.sessions").setup()
+
+    -- require("mini.visits").setup()
+
     -- Needs to be after every other mini module, I think
     require("mini.extra").setup()
 end)

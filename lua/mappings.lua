@@ -29,6 +29,7 @@ map("n", "<leader>sh", "<cmd> split <CR>")                                      
 map("n", "<leader>sv", "<cmd> vsplit <CR>")                                                      -- Vertical split
 map("n", "<leader>wd", "<cmd> close <CR>")                                                       -- Window close
 map("n", "<leader>bb", "<cmd> Pick buffers <CR>")                                                -- Buffers
+map("n", "<leader>bz", "<cmd> lua require('mini.misc').zoom() <CR>")                             -- Zoom current buffer
 map("n", "<leader>nn", "<cmd> cd ~/Repos/notes/ <CR><cmd> Pick files cwd='~/Repos/notes/' <CR>") -- Browse notes
 map("n", "<leader>co", "<cmd> Pick colorscheme <CR>")                                            -- Choose colorscheme
 map("n", "<leader>nc", function()
