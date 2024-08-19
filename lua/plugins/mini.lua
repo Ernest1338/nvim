@@ -166,7 +166,7 @@ later(function()
 
     -- require("mini.trailspace").setup()
 
-    -- require("mini.sessions").setup()
+    -- require("mini.sessions").setup({ directory = vim.fn.stdpath("state") .. "/mini-sessions/" })
 
     -- require("mini.visits").setup()
 
