@@ -27,6 +27,12 @@ require("plugins.nvim-cmp")
 -- require("plugins.vim-fugitive")
 -- require("plugins.vim-smooth-scroll")
 -- require("plugins.git-blame")
+-- require("plugins.zen-mode")
+-- require("plugins.trouble")
+-- require("plugins.noice")
+-- require("plugins.which-key")
+-- require("plugins.drop")
+-- require("plugins.persistence")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
