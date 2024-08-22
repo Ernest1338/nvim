@@ -33,6 +33,12 @@ require("plugins.nvim-cmp")
 -- require("plugins.which-key")
 -- require("plugins.drop")
 -- require("plugins.persistence")
+-- require("plugins.gitsigns")
+-- require("plugins.neominimap")
+-- require("plugins.kulala")
+-- require("plugins.curl")
+-- require("plugins.rest")
+-- require("plugins.fidget")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --

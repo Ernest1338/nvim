@@ -158,6 +158,14 @@ later(function()
     --         minimap.gen_integration.diff(),
     --         minimap.gen_integration.diagnostic(),
     --     },
+    --     symbols = {
+    --         encode = minimap.gen_encode_symbols.dot("4x2"),
+    --         scroll_line = "┿",
+    --         scroll_view = "│",
+    --     },
+    --     window = {
+    --         width = 12,
+    --     },
     -- })
     -- -- Show on startup
     -- minimap.toggle()
@@ -169,6 +177,8 @@ later(function()
     -- require("mini.sessions").setup({ directory = vim.fn.stdpath("state") .. "/mini-sessions/" })
 
     -- require("mini.visits").setup()
+
+    -- require("mini.align").setup()
 
     -- Needs to be after every other mini module, I think
     require("mini.extra").setup()
