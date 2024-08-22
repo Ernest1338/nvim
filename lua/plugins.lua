@@ -39,6 +39,7 @@ require("plugins.nvim-cmp")
 -- require("plugins.curl")
 -- require("plugins.rest")
 -- require("plugins.fidget")
+-- require("plugins.codeium")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
