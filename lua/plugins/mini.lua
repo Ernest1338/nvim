@@ -156,6 +156,7 @@ later(function()
     map("n", "<leader>gs", "<cmd> lua MiniGit.show_at_cursor() <CR>")
     map("n", "<leader>gS", "<cmd> Git status <CR>")
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
+    map("n", "<leader>gb", "<Cmd> horiz Git blame -- % <CR>")
 
     -- require("mini.surround").setup()
 
