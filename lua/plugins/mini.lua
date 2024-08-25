@@ -91,14 +91,28 @@ later(function()
     end
     MiniPick.registry.filetype = function()
         local items = vim.fn.getcompletion("", "filetype")
-        local filetype = MiniPick.start({ source = { items = items } })
-        if filetype ~= nil then vim.api.nvim_set_option_value('filetype', filetype, {}) end
+        MiniPick.start({
+            source = {
+                items = items,
+                choose = function(filetype)
+                    if filetype ~= nil then vim.api.nvim_set_option_value('filetype', filetype, {}) end
+                end
+            }
+        })
     end
     MiniPick.registry.colorscheme = function()
         local items = vim.fn.getcompletion("", "color")
         local preview = function(_, item) vim.cmd("colorscheme " .. item) end
-        local colorscheme = MiniPick.start({ source = { items = items, preview = preview }, window = { config = { width = 20, col = vim.o.columns } } })
-        if colorscheme ~= nil then vim.cmd("colorscheme " .. colorscheme) end
+        MiniPick.start({
+            source = {
+                items = items,
+                preview = preview,
+                choose = function(colorscheme)
+                    if colorscheme ~= nil then vim.cmd("colorscheme " .. colorscheme) end
+                end
+            },
+            window = { config = { width = 20, col = vim.o.columns } }
+        })
     end
 
     local hipatterns = require("mini.hipatterns")
