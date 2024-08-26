@@ -10,10 +10,9 @@ let g:colors_name = 'kanagawa'
 set background=dark
 let s:background = &background
 
-"previous bg_float: #16161d
 let s:p = #{
       \  bg : '#1f1f28',
-      \  bg_float: '#1f1f28',
+      \  bg_float: '#1b1b22',
       \  bg_dim : '#202233',
       \  bg_alt : '#292e42',
       \  fg :     '#dcd7ba',
@@ -71,7 +70,7 @@ exe 'hi Cursorline' .s:bg_bg_dim
 exe 'hi CursorLineNr' . s:fg_fg
 "pmenu
 exe 'hi Pmenu ' . s:bg_bg_dim .s:fg_fg_dim
-exe 'hi PmenuSel ' . s:bg_bg_alt . s:fg_teal
+exe 'hi PmenuSel ' . s:bg_bg_alt . s:fg_blue
 exe 'hi PmenuSbar guifg=#586e75'
 exe 'hi PmenuKind ' . s:bg_bg_dim . s:fg_yellow
 hi! link PmenuKindSel PmenuSel

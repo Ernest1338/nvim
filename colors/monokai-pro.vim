@@ -10,10 +10,9 @@ let g:colors_name = 'monokai-pro'
 set background=dark
 let s:background = &background
 
-"previous bg_float: #221f22
 let s:p = #{
       \  bg : '#2d2a2e',
-      \  bg_float: '#2d2a2e',
+      \  bg_float: '#282628',
       \  bg_dim : '#373438',
       \  bg_alt : '#434043',
       \  fg :     '#fcfcfa',
@@ -70,7 +69,7 @@ exe 'hi Title' . s:fg_orange .'gui=bold'
 exe 'hi Cursorline' .s:bg_bg_dim
 exe 'hi CursorLineNr' . s:fg_fg
 "pmenu
-exe 'hi Pmenu ' . s:bg_bg_dim .s:fg_fg_dim
+exe 'hi Pmenu ' . s:bg_bg_dim .s:fg_fg
 exe 'hi PmenuSel ' . s:bg_bg_alt . s:fg_teal
 exe 'hi PmenuSbar guifg=#586e75'
 exe 'hi PmenuKind ' . s:bg_bg_dim . s:fg_yellow

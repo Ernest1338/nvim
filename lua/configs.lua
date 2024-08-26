@@ -1,5 +1,5 @@
 -- colorscheme
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme monokai-pro")
 
 -- relative numbers
 vim.wo.number = true

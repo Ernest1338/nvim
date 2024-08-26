@@ -10,10 +10,9 @@ let g:colors_name = 'mirage'
 set background=dark
 let s:background = &background
 
-"previous bg_float: #14131f
 let s:p = #{
       \  bg : '#141821',
-      \  bg_float: '#141821',
+      \  bg_float: '#14131f',
       \  bg_dim : '#1c202e',
       \  bg_alt : '#222738',
       \  fg :     '#cccccc',
@@ -70,7 +69,7 @@ exe 'hi Title' . s:fg_orange .'gui=bold'
 exe 'hi Cursorline' .s:bg_bg_dim
 exe 'hi CursorLineNr' . s:fg_fg
 "pmenu
-exe 'hi Pmenu ' . s:bg_bg_dim .s:fg_fg_dim
+exe 'hi Pmenu ' . s:bg_bg_dim .s:fg_fg
 exe 'hi PmenuSel ' . s:bg_bg_alt . s:fg_teal
 exe 'hi PmenuSbar guifg=#586e75'
 exe 'hi PmenuKind ' . s:bg_bg_dim . s:fg_yellow
