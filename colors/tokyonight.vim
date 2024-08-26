@@ -71,10 +71,10 @@ exe 'hi Title' . s:fg_orange .'gui=bold'
 exe 'hi Cursorline' .s:bg_bg_dim
 exe 'hi CursorLineNr' . s:fg_fg
 "pmenu
-exe 'hi Pmenu ' . s:bg_bg_float .s:fg_fg_dim
-exe 'hi PmenuSel guibg=#222038 ' . s:fg_teal
+exe 'hi Pmenu ' . s:bg_bg_dim .s:fg_fg_dim
+exe 'hi PmenuSel ' . s:bg_bg_alt . s:fg_teal
 exe 'hi PmenuSbar guifg=#586e75'
-exe 'hi PmenuKind ' . s:bg_bg_float . s:fg_yellow
+exe 'hi PmenuKind ' . s:bg_bg_dim . s:fg_yellow
 hi! link PmenuKindSel PmenuSel
 hi! link PmenuExtra Pmenu
 hi! link PmenuExtraSel PmenuSel
