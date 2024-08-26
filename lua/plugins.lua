@@ -53,6 +53,8 @@ require("plugins.mini-pickaproject")
 -- require("plugins.zen-mode")
 -- require("plugins.no-neck-pain")
 -- require("plugins.codeium")
+-- require("plugins.dap")
+-- require("plugins.dadbod")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
