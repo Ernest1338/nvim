@@ -46,21 +46,6 @@ later(function()
         }
     })
 
-    -- require("mini.notify").setup({
-    --     content = {
-    --         format = function(notif) return notif.msg end,
-    --     },
-    --     window = {
-    --         config = {
-    --             border = "none",
-    --             anchor = "SE",
-    --             row = vim.o.lines - 1
-    --         },
-    --         winblend = 100,
-    --     }
-    -- })
-    vim.notify = require("mini.notify").make_notify()
-
     require("mini.pick").setup({
         mappings = {
             move_up = "<C-k>",
@@ -95,7 +80,8 @@ later(function()
             source = {
                 items = items,
                 choose = function(filetype)
-                    if filetype ~= nil then vim.api.nvim_set_option_value('filetype', filetype, {}) end
+                    if filetype == nil then return end
+                    vim.schedule(function() vim.cmd("setfiletype " .. filetype) end)
                 end
             }
         })
@@ -108,7 +94,8 @@ later(function()
                 items = items,
                 preview = preview,
                 choose = function(colorscheme)
-                    if colorscheme ~= nil then vim.cmd("colorscheme " .. colorscheme) end
+                    if colorscheme == nil then return end
+                    vim.cmd("colorscheme " .. colorscheme)
                 end
             },
             window = { config = { width = 20, col = vim.o.columns } }
@@ -157,6 +144,21 @@ later(function()
     map("n", "<leader>gS", "<cmd> Git status <CR>")
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
     map("n", "<leader>gb", "<Cmd> horiz Git blame -- % <CR>")
+
+    vim.notify = require("mini.notify").make_notify()
+    -- require("mini.notify").setup({
+    --     content = {
+    --         format = function(notif) return notif.msg end,
+    --     },
+    --     window = {
+    --         config = {
+    --             border = "none",
+    --             anchor = "SE",
+    --             row = vim.o.lines - 1
+    --         },
+    --         winblend = 100,
+    --     }
+    -- })
 
     -- require("mini.surround").setup()
 
