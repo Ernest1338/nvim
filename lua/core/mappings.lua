@@ -23,8 +23,6 @@ map("n", "<leader>fR", "<cmd> Pick oldfiles <CR>")                              
 map("n", "<leader>of", "<cmd> Pick explorer cwd='$HOME' <CR>")                                   -- Open file
 map("n", "<leader>ot", "<cmd> Pick hipatterns scope='all' <CR>")                                 -- Open TODOs and similar
 map("n", "<leader>:", "<cmd> Pick commands <CR>")                                                -- Pick commands
-map("n", "<leader>pp", "<cmd> Pick project <CR>")                                                -- Projects
-map("n", "<leader>pe", "<cmd> edit ~/.local/share/nvim/projects.txt <CR>")                       -- Edit projects file
 map("n", "<leader>sh", "<cmd> split <CR>")                                                       -- Horizontal split
 map("n", "<leader>sv", "<cmd> vsplit <CR>")                                                      -- Vertical split
 map("n", "<leader>wd", "<cmd> close <CR>")                                                       -- Window close
