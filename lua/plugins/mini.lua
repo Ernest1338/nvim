@@ -136,15 +136,14 @@ later(function()
     end
 
     local hipatterns = require("mini.hipatterns")
+    local hi_words = require("mini.extra").gen_highlighter.words
     hipatterns.setup {
         highlighters = {
-            fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFix' },
-            fix       = { pattern = '%f[%w]()FIX()%f[%W]', group = 'MiniHipatternsFix' },
-            warning   = { pattern = '%f[%w]()WARNING()%f[%W]', group = 'MiniHipatternsWarning' },
-            hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsWarning' },
-            todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-            note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-            perf      = { pattern = '%f[%w]()PERF()%f[%W]', group = 'MiniHipatternsPerf' },
+            fix       = hi_words({ 'FIXME', 'FIX' }, 'MiniHipatternsFix'),
+            warning   = hi_words({ 'WARNING', 'HACK' }, 'MiniHipatternsWarning'),
+            todo      = hi_words({ 'TODO' }, 'MiniHipatternsTodo'),
+            note      = hi_words({ 'NOTE' }, 'MiniHipatternsNote'),
+            perf      = hi_words({ 'PERF' }, 'MiniHipatternsPerf'),
             hex_color = hipatterns.gen_highlighter.hex_color(),
         }
     }
@@ -238,6 +237,5 @@ later(function()
 
     -- require("mini.align").setup()
 
-    -- Needs to be after every other mini module, I think
     require("mini.extra").setup()
 end)
