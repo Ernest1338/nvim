@@ -16,21 +16,54 @@ now(function()
     -- require("mini.starter").setup()
 
     local statusline = require("mini.statusline")
-    statusline.setup({ content = { inactive = statusline.active } }) -- workaround for termplug when process exits
+    statusline.setup({
+        content = {
+            -- workaround for termplug when process exits
+            inactive = statusline.active
+        }
+    })
 end)
 
 later(function()
     require("mini.icons").setup()
     MiniIcons.tweak_lsp_kind("prepend")
 
-    require("mini.comment").setup({ mappings = { comment_visual = "<leader>/" } })
+    require("mini.comment").setup({
+        mappings = {
+            comment_visual = "<leader>/"
+        }
+    })
 
-    require("mini.jump2d").setup({ mappings = { start_jumping = "<leader>j" }, view = { n_steps_ahead = 1 } })
+    require("mini.jump2d").setup({
+        mappings = {
+            start_jumping = "<leader>j"
+        },
+        view = {
+            n_steps_ahead = 1
+        }
+    })
 
-    require("mini.files").setup({ mappings = { go_in_plus = "<CR>" }, options = { permanent_delete = false } })
+    require("mini.files").setup({
+        mappings = {
+            go_in_plus = "<CR>"
+        },
+        options = {
+            permanent_delete = false
+        },
+        windows = {
+            preview = false
+        }
+    })
     map("n", "<C-f>", "<Cmd>lua if not MiniFiles.close() then MiniFiles.open() end<CR>") -- Toggle file tree
 
-    require("mini.move").setup({ mappings = { left = "H", right = "L", down = "J", up = "K" } })
+    require("mini.move").setup({
+        mappings = {
+            left = "H",
+            right = "L",
+            down = "J",
+            up = "K"
+        }
+    })
 
     require("mini.diff").setup({
         view = {
@@ -128,7 +161,13 @@ later(function()
     vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
     vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
 
-    require("mini.pairs").setup({ modes = { insert = true, command = true, terminal = true } })
+    require("mini.pairs").setup({
+        modes = {
+            insert = true,
+            command = true,
+            terminal = true
+        }
+    })
 
     require("mini.git").setup()
     map("n", "<leader>ga", "<cmd> Git add . <CR>")
@@ -164,7 +203,9 @@ later(function()
 
     -- require("mini.animate").setup()
 
-    -- require("mini.cursorword").setup({ delay = 500 })
+    -- require("mini.cursorword").setup({
+    --     delay = 500
+    -- })
 
     -- local minimap = require("mini.map")
     -- minimap.setup({
@@ -189,7 +230,9 @@ later(function()
 
     -- require("mini.trailspace").setup()
 
-    -- require("mini.sessions").setup({ directory = vim.fn.stdpath("state") .. "/mini-sessions/" })
+    -- require("mini.sessions").setup({
+    --     directory = vim.fn.stdpath("state") .. "/mini-sessions/"
+    -- })
 
     -- require("mini.visits").setup()
 
