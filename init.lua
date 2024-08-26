@@ -36,11 +36,11 @@ for i = 1, #builtin_plugs do
     vim.g["loaded_" .. builtin_plugs[i]] = true
 end
 
-require("configs")
-require("mappings")
+require("core.configs")
+require("core.mappings")
 
 require("mini.deps").setup({ job = { n_threads = 10 }, path = { package = path_package } })
-require("plugins")
+require("core.plugins")
 
 -- LSP setup (choose either one of those)
 MiniDeps.later(function() require("lsp.custom-setup") end)
