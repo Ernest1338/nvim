@@ -111,6 +111,7 @@ later(function()
         local items = vim.fn.getcompletion("", "filetype")
         MiniPick.start({
             source = {
+                name = "File type",
                 items = items,
                 choose = function(filetype)
                     if filetype == nil then return end
@@ -124,6 +125,7 @@ later(function()
         local preview = function(_, item) vim.cmd("colorscheme " .. item) end
         MiniPick.start({
             source = {
+                name = "Colorscheme",
                 items = items,
                 preview = preview,
                 choose = function(colorscheme)
