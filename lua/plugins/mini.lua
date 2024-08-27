@@ -102,6 +102,7 @@ later(function()
             end
         }
     })
+    vim.ui.select = MiniPick.ui_select
     MiniPick.registry.files = function(local_opts)
         local opts = { source = { cwd = local_opts.cwd } }
         local_opts.cwd = nil
