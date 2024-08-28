@@ -45,6 +45,7 @@ require("plugins.mini-pickaproject")
 -- require("plugins.indent-blankline")
 -- require("plugins.neominimap")
 -- require("plugins.fidget")
+-- require("plugins.lualine")
 
 -- [[ OTHERS ]]
 -- require("plugins.cube-timer")
