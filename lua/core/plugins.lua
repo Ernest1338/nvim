@@ -34,7 +34,6 @@ require("plugins.mini-pickaproject")
 -- [[ NETWORK ]]
 -- require("plugins.kulala")
 -- require("plugins.curl")
--- require("plugins.rest")
 
 -- [[ UI ]]
 -- require("plugins.trouble")
