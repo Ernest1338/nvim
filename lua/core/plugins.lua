@@ -44,6 +44,10 @@ require("plugins.mini-pickaproject")
 -- require("plugins.neominimap")
 -- require("plugins.fidget")
 -- require("plugins.lualine")
+-- require("plugins.dressing")
+-- require("plugins.searchbox")
+-- require("plugins.satellite")
+-- require("plugins.nvim-scrollview")
 
 -- [[ OTHERS ]]
 -- require("plugins.cube-timer")
@@ -55,6 +59,8 @@ require("plugins.mini-pickaproject")
 -- require("plugins.dap")
 -- require("plugins.dadbod")
 -- require("plugins.flash")
+-- require("plugins.nvim-spectre")
+-- require("plugins.encourage")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
