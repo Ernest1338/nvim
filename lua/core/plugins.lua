@@ -22,7 +22,6 @@ require("plugins.mini-pickaproject")
 -- require("plugins.nvim-cmp")
 -- require("plugins.nvim-snippets")
 -- require("plugins.epo-nvim")
--- require("plugins.autocomplete-nvim")
 -- require("plugins.coq-nvim")
 
 -- [[ GIT ]]
