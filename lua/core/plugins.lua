@@ -54,6 +54,7 @@ require("plugins.mini-pickaproject")
 -- require("plugins.codeium")
 -- require("plugins.dap")
 -- require("plugins.dadbod")
+-- require("plugins.flash")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
