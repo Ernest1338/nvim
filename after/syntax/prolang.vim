@@ -3,8 +3,10 @@
 " Reset syntax rules
 syntax clear
 
+setlocal commentstring=//%s
+
 " Define keywords
-syntax keyword prolangKeyword var fn if elif else loop ret export C
+syntax keyword prolangKeyword var fn if elif else loop ret export C import
 syntax keyword prolangType char int void
 syntax keyword prolangFunction main print println strcmp
 
@@ -27,7 +29,7 @@ syntax match prolangSeparator /,/
 syntax match prolangPointer /\*/
 
 " Define comments
-syntax match prolangComment /\/\/.\+$/
+syntax match prolangComment /\/\/.*$/
 
 " Define braces and brackets
 syntax match prolangBraces /{}/ contained
