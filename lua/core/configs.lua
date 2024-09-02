@@ -38,7 +38,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- decrease update time
-vim.o.updatetime = 500
+vim.o.updatetime = 1000
 
 -- better completion experience
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -69,8 +69,8 @@ vim.o.termguicolors = true
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- gives one more line to work with
-vim.o.cmdheight = 0            -- switching to eg-statusline fixed the statusline disapearing problem
-vim.opt.shortmess:append("cI") -- might be needed for proper cmdheight + don't show intro message
+vim.o.cmdheight = 0
+vim.opt.shortmess:append("cI")
 
 local new_augrp = function(name) vim.api.nvim_create_augroup(name, { clear = true }) end
 local new_autocmd = vim.api.nvim_create_autocmd

@@ -160,8 +160,8 @@ later(function()
 
     -- TODO: switch to mini.completion and mini.pairs when either mini.completion update drops or neovim/pull/25541 lands
     require("mini.completion").setup()
-    vim.api.nvim_set_keymap('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
-    vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
+    map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
+    map('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
 
     require("mini.pairs").setup({
         modes = {
@@ -187,6 +187,7 @@ later(function()
     map("n", "<leader>gb", "<Cmd> horiz Git blame -- % <CR>")
 
     vim.notify = require("mini.notify").make_notify()
+    -- hl(0, "MiniNotifyNormal", { bg = "NONE", fg = "#525052" })
     -- require("mini.notify").setup({
     --     content = {
     --         format = function(notif) return notif.msg end,
@@ -195,7 +196,7 @@ later(function()
     --         config = {
     --             border = "none",
     --             anchor = "SE",
-    --             row = vim.o.lines - 1
+    --             row = vim.o.lines - 1,
     --         },
     --         winblend = 100,
     --     }
