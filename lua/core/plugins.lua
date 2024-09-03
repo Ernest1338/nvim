@@ -61,6 +61,7 @@ require("plugins.mini-pickaproject")
 -- require("plugins.flash")
 -- require("plugins.nvim-spectre")
 -- require("plugins.encourage")
+require("plugins.nvim-rip-substitute")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
