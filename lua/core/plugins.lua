@@ -87,3 +87,9 @@ local function runtime_add(path) vim.o.runtimepath = vim.o.runtimepath .. "," ..
 --     require("termplug").setup()
 --     vim.keymap.set({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
 -- end)
+
+-- runtime_add("~/Repos/mini.pickaproject")
+-- MiniDeps.later(function()
+--     require("mini.pickaproject").setup()
+--     vim.keymap.set("n", "<leader>pp", "<cmd> Pick project <CR>")
+-- end)
