@@ -22,6 +22,11 @@ now(function()
             inactive = statusline.active
         }
     })
+
+    -- require("mini.sessions").setup({
+    --     autoread = true,
+    --     directory = vim.fn.stdpath("state") .. "/mini-sessions/"
+    -- })
 end)
 
 later(function()
@@ -232,10 +237,6 @@ later(function()
     -- require("mini.jump").setup()
 
     -- require("mini.trailspace").setup()
-
-    -- require("mini.sessions").setup({
-    --     directory = vim.fn.stdpath("state") .. "/mini-sessions/"
-    -- })
 
     -- require("mini.visits").setup()
 

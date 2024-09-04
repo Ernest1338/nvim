@@ -15,6 +15,7 @@ require("plugins.mini-pickaproject")
 -- require("plugins.vim-smooth-scroll")
 -- require("plugins.persistence")
 -- require("plugins.toggleterm")
+-- require("plugins.persisted")
 
 -- [[ CMP ]]
 -- require("plugins.luasnip")
@@ -48,6 +49,18 @@ require("plugins.mini-pickaproject")
 -- require("plugins.searchbox")
 -- require("plugins.satellite")
 -- require("plugins.nvim-scrollview")
+-- require("plugins.tiny-inline-diagnostic")
+
+-- [[ COLORSCHEMES ]]
+-- require("plugins.onedarkpro")
+-- require("plugins.tokyonight")
+-- require("plugins.catppuccin")
+-- require("plugins.nightfox")
+-- require("plugins.everforest")
+-- require("plugins.edge")
+-- require("plugins.github-nvim-theme")
+-- require("plugins.sonokai")
+-- require("plugins.onedark")
 
 -- [[ OTHERS ]]
 -- require("plugins.cube-timer")
@@ -61,7 +74,7 @@ require("plugins.mini-pickaproject")
 -- require("plugins.flash")
 -- require("plugins.nvim-spectre")
 -- require("plugins.encourage")
-require("plugins.nvim-rip-substitute")
+-- require("plugins.nvim-rip-substitute")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
