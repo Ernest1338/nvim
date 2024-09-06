@@ -6,8 +6,8 @@ syntax clear
 setlocal commentstring=//%s
 
 " Define keywords
-syntax keyword prolangKeyword var fn if elif else loop ret export C import
-syntax keyword prolangType char int void string
+syntax keyword prolangKeyword var fn if elif else loop ret export C import continue
+syntax keyword prolangType char int void string VecString bool ulong
 syntax keyword prolangFunction main print println strcmp eprint eprintln
 
 " Define functions TODO
