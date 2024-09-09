@@ -38,6 +38,9 @@ syntax match prolangBrackets /\[\]\|()\|{}/
 " Define numbers
 syntax match prolangNumber /\<\d\+\>/
 
+" Define bool values
+syntax keyword prolangBool true false
+
 " Set the colors for the syntax groups
 hi def link prolangKeyword Keyword
 hi def link prolangType Type
@@ -53,6 +56,7 @@ hi def link prolangPointer Type
 hi def link prolangBraces Delimiter
 hi def link prolangBrackets Delimiter
 hi def link prolangNumber Number
+hi def link prolangBool Number
 hi def link prolangComment Comment
 
 " Default highlighting
