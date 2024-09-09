@@ -30,10 +30,12 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.git.vim-fugitive")
 -- require("plugins.git.git-blame")
 -- require("plugins.git.gitsigns")
+-- require("plugins.git.vim-flog")
 
 -- [[ NETWORK ]]
 -- require("plugins.network.kulala")
 -- require("plugins.network.curl")
+-- require("plugins.network.http-client")
 
 -- [[ UI ]]
 -- require("plugins.ui.dashboard")
