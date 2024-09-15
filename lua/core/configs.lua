@@ -1,3 +1,5 @@
+local u = require("core.utils")
+
 -- colorscheme
 vim.cmd("colorscheme monokai-pro")
 
@@ -72,19 +74,16 @@ vim.o.termguicolors = true
 vim.o.cmdheight = 0
 vim.opt.shortmess:append("cI")
 
-local new_augrp = function(name) vim.api.nvim_create_augroup(name, { clear = true }) end
-local new_autocmd = vim.api.nvim_create_autocmd
-
 -- Highlight on yank
-local yank_grp = new_augrp("YankHighlight")
-new_autocmd("TextYankPost", {
+local yank_grp = u.new_augrp("YankHighlight")
+u.new_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank({ timeout = 200 }) end,
     group = yank_grp,
 })
 
 -- Auto remove trailing spaces on write
-local trailing_grp = new_augrp("TrailingSpaces")
-new_autocmd("BufWritePre", {
+local trailing_grp = u.new_augrp("TrailingSpaces")
+u.new_autocmd("BufWritePre", {
     callback = function()
         local original_cursor = vim.api.nvim_win_get_cursor(0)
         vim.cmd([[keeppatterns %s/\s\+$//e]])

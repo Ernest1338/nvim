@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local u = require("core.utils")
 
 -- map leader key as space
 vim.g.mapleader = " "
@@ -29,21 +30,24 @@ map("n", "<leader>bb", "<cmd> Pick buffers <CR>")                               
 map("n", "<leader>bz", "<cmd> lua require('mini.misc').zoom() <CR>")                             -- Zoom current buffer
 map("n", "<leader>co", "<cmd> Pick colorscheme <CR>")                                            -- Choose colorscheme
 map("n", "<leader>nn", "<cmd> cd ~/Repos/notes/ <CR><cmd> Pick files cwd='~/Repos/notes/' <CR>") -- Browse notes
-map("n", "<leader>nc", function()
-    local notes_dir = "~/Repos/notes/oneTimeNotes/Others/"
-    local note = vim.fn.input("Note file name (.md added automatically): ") .. ".md"
-    if note ~= ".md" then
-        vim.cmd("edit " .. notes_dir .. note)   -- Open file in a new buf
-        vim.api.nvim_set_current_dir(notes_dir) -- Change CWD to notes
-    end
-end)                                            -- Create new note (one time notes directory) and open it
+map("n", "<leader>nc", u.create_new_note)                                                        -- Create new note (one time notes directory) and open it
 map("n", "<leader>tb", function()
     if vim.o.showtabline ~= 0 then
         vim.o.showtabline = 0
     else
         vim.o.showtabline = 2
     end
-end)                                         -- Show / hide tab bar
+end) -- Show / hide tab bar
+map({ "n", "v" }, "<leader>ai", function()
+    local prompt = vim.fn.input("Query: ")
+    local context = table.concat(u.get_current_selection(), '\n')
+    u.ask_ai(prompt, context)
+end) -- AI using tgpt
+map("v", "<leader>ad", function()
+    local prompt = "Describe the following code"
+    local context = table.concat(u.get_current_selection(), '\n')
+    u.ask_ai(prompt, context)
+end)                                         -- AI describe selected code
 map("n", "<leader>td", "<cmd> bdelete <CR>") -- Delete current buffer (and tab)
 map("n", "<f2>", "<cmd> Pick keymaps <CR>")  -- Show keymaps
 map("n", "<f3>", "<cmd> Pick help <CR>")     -- Neovim help pages
