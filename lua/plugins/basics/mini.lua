@@ -32,6 +32,7 @@ end)
 later(function()
     require("mini.icons").setup()
     MiniIcons.tweak_lsp_kind("prepend")
+    MiniIcons.mock_nvim_web_devicons()
 
     require("mini.comment").setup({
         mappings = {
