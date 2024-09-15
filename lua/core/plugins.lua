@@ -56,6 +56,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.zen-mode")
 -- require("plugins.ui.no-neck-pain")
 -- require("plugins.ui.drop")
+-- require("plugins.ui.diffview")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
