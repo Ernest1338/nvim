@@ -37,30 +37,26 @@ map("n", "<leader>tb", function()
     else
         vim.o.showtabline = 2
     end
-end) -- Show / hide tab bar
-map({ "n", "v" }, "<leader>ai", function()
-    local prompt = vim.fn.input("Query: ")
-    local context = table.concat(u.get_current_selection(), '\n')
-    u.ask_ai(prompt, context)
-end) -- AI using tgpt
-map("v", "<leader>ad", function()
-    local prompt = "Describe the following code"
-    local context = table.concat(u.get_current_selection(), '\n')
-    u.ask_ai(prompt, context)
-end)                                         -- AI describe selected code
-map("n", "<leader>td", "<cmd> bdelete <CR>") -- Delete current buffer (and tab)
-map("n", "<f2>", "<cmd> Pick keymaps <CR>")  -- Show keymaps
-map("n", "<f3>", "<cmd> Pick help <CR>")     -- Neovim help pages
-map("n", "<tab>", "<cmd> bnext <CR>")        -- Next buffer
-map("n", "<S-tab>", "<cmd> bprev <CR>")      -- Previous buffer
-map("v", "Y", "\"+ygv<esc>")                 -- Y To copy to system clipboard
-map({ "n", "v" }, "<C-d>", "<C-d>zz")        -- Center C-d
-map({ "n", "v" }, "<C-u>", "<C-u>zz")        -- Center C-u
-map("n", "n", "nzzzv")                       -- Center search
-map("n", "N", "Nzzzv")                       -- Center backwards search
-map("v", "y", "ygv<esc>")                    -- Prevent cursor jump when copying
-map("n", ";", "<cmd> Pick commands <CR>")    -- Quick command
-map("t", "<A-Esc>", "<C-\\><C-n>")           -- Terminal enter normal mode
+end)                                                                                                                 -- Show / hide tab bar
+map("n", "<leader>aq", function() u.ask_ai(vim.fn.input("Query: ")) end)                                             -- Ask AI
+map({ "n", "v" }, "<leader>ai", function() u.ask_ai(vim.fn.input("Query: "), u.get_cur_sel_or_buf()) end)            -- AI using tgpt with current buffer context
+map("v", "<leader>ad", function() u.ask_ai("Describe the following code", u.get_current_selection()) end)            -- AI describe selected code
+map("n", "<leader>ac",
+    function() u.ask_ai("Implement the code which I indicated using text 'HERE'", u.get_lines_cur_buf(), true) end)  -- AI write code
+map({ "n", "v" }, "<leader>am", function() u.ask_ai("How would you improve this code?", u.get_cur_sel_or_buf()) end) -- AI improve code
+map("n", "<leader>td", "<cmd> bdelete <CR>")                                                                         -- Delete current buffer (and tab)
+map("n", "<f2>", "<cmd> Pick keymaps <CR>")                                                                          -- Show keymaps
+map("n", "<f3>", "<cmd> Pick help <CR>")                                                                             -- Neovim help pages
+map("n", "<tab>", "<cmd> bnext <CR>")                                                                                -- Next buffer
+map("n", "<S-tab>", "<cmd> bprev <CR>")                                                                              -- Previous buffer
+map("v", "Y", "\"+ygv<esc>")                                                                                         -- Y To copy to system clipboard
+map({ "n", "v" }, "<C-d>", "<C-d>zz")                                                                                -- Center C-d
+map({ "n", "v" }, "<C-u>", "<C-u>zz")                                                                                -- Center C-u
+map("n", "n", "nzzzv")                                                                                               -- Center search
+map("n", "N", "Nzzzv")                                                                                               -- Center backwards search
+map("v", "y", "ygv<esc>")                                                                                            -- Prevent cursor jump when copying
+map("n", ";", "<cmd> Pick commands <CR>")                                                                            -- Quick command
+map("t", "<A-Esc>", "<C-\\><C-n>")                                                                                   -- Terminal enter normal mode
 
 -- map("n", "<leader>fR", "<cmd> Pick oldfiles <CR>")                                               -- Recent files
 -- map("n", "<leader>tj", "<cmd> Pick list scope='jump' <CR>") -- Jumplist
