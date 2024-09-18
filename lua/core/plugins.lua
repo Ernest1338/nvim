@@ -84,15 +84,15 @@ require("plugins.basics.mini-pickaproject")
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
 --
 
-local function runtime_add(path) vim.o.runtimepath = vim.o.runtimepath .. "," .. path end
+local u = require("core.utils")
 
--- runtime_add("~/Repos/termplug.nvim")
+-- u.runtime_add("~/Repos/termplug.nvim")
 -- MiniDeps.later(function()
 --     require("termplug").setup()
 --     vim.keymap.set({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
 -- end)
 
--- runtime_add("~/Repos/mini.pickaproject")
+-- u.runtime_add("~/Repos/mini.pickaproject")
 -- MiniDeps.later(function()
 --     require("mini.pickaproject").setup()
 --     vim.keymap.set("n", "<leader>pp", "<cmd> Pick project <CR>")

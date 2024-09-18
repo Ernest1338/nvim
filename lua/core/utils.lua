@@ -71,4 +71,16 @@ M.create_new_note = function()
     end
 end
 
+M.runtime_add = function(path)
+    vim.o.runtimepath = vim.o.runtimepath .. "," .. path
+end
+
+M.toggle_tabline = function()
+    if vim.o.showtabline ~= 0 then
+        vim.o.showtabline = 0
+    else
+        vim.o.showtabline = 2
+    end
+end
+
 return M

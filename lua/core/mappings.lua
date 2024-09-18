@@ -7,37 +7,31 @@ vim.g.maplocalleader = " "
 
 -- NOTE: <leader>k - special group of bindings (can be eventually)
 
-map({ "i", "t" }, "<C-k>", "<up>")                                                               -- <C-k> to move up
-map({ "i", "t" }, "<C-j>", "<down>")                                                             -- <C-j> to move down
-map({ "i", "t" }, "<C-h>", "<left>")                                                             -- <C-h> to move left
-map({ "i", "t" }, "<C-l>", "<right>")                                                            -- <C-l> to move right
-map("n", "<leader>fd", "<cmd> Pick grep_live <CR>")                                              -- Search project
-map("n", "<leader>fD", "<cmd> Pick buf_lines scope='current' <CR>")                              -- Search current file
-map("n", "<leader>fs", "<cmd>:silent w<CR>")                                                     -- Save file
-map("n", "<leader><leader>", "<cmd> Pick files <CR>")                                            -- Find files
-map("n", "<leader>qq", "<cmd> q <CR>")                                                           -- Quit
-map("n", "<leader>qQ", "<cmd> q! <CR>")                                                          -- Force quit
-map("n", "<leader>fc", "<cmd> Pick files cwd='~/.config/nvim/' <CR>")                            -- Modify config
-map("n", "<leader>ft", "<cmd> Pick filetype <CR>")                                               -- Change file type
-map("n", "<leader>fr", "<cmd> edit! <CR>")                                                       -- Reload file
-map("n", "<leader>of", "<cmd> Pick explorer cwd='$HOME' <CR>")                                   -- Open file
-map("n", "<leader>ot", "<cmd> Pick hipatterns scope='all' <CR>")                                 -- Open TODOs and similar
-map("n", "<leader>:", "<cmd> Pick commands <CR>")                                                -- Pick commands
-map("n", "<leader>sh", "<cmd> split <CR>")                                                       -- Horizontal split
-map("n", "<leader>sv", "<cmd> vsplit <CR>")                                                      -- Vertical split
-map("n", "<leader>wd", "<cmd> close <CR>")                                                       -- Window close
-map("n", "<leader>bb", "<cmd> Pick buffers <CR>")                                                -- Buffers
-map("n", "<leader>bz", "<cmd> lua require('mini.misc').zoom() <CR>")                             -- Zoom current buffer
-map("n", "<leader>co", "<cmd> Pick colorscheme <CR>")                                            -- Choose colorscheme
-map("n", "<leader>nn", "<cmd> cd ~/Repos/notes/ <CR><cmd> Pick files cwd='~/Repos/notes/' <CR>") -- Browse notes
-map("n", "<leader>nc", u.create_new_note)                                                        -- Create new note (one time notes directory) and open it
-map("n", "<leader>tb", function()
-    if vim.o.showtabline ~= 0 then
-        vim.o.showtabline = 0
-    else
-        vim.o.showtabline = 2
-    end
-end)                                                                                                                 -- Show / hide tab bar
+map({ "i", "t" }, "<C-k>", "<up>")                                                                                   -- <C-k> to move up
+map({ "i", "t" }, "<C-j>", "<down>")                                                                                 -- <C-j> to move down
+map({ "i", "t" }, "<C-h>", "<left>")                                                                                 -- <C-h> to move left
+map({ "i", "t" }, "<C-l>", "<right>")                                                                                -- <C-l> to move right
+map("n", "<leader>fd", "<cmd> Pick grep_live <CR>")                                                                  -- Search project
+map("n", "<leader>fD", "<cmd> Pick buf_lines scope='current' <CR>")                                                  -- Search current file
+map("n", "<leader>fs", "<cmd>:silent w<CR>")                                                                         -- Save file
+map("n", "<leader><leader>", "<cmd> Pick files <CR>")                                                                -- Find files
+map("n", "<leader>qq", "<cmd> q <CR>")                                                                               -- Quit
+map("n", "<leader>qQ", "<cmd> q! <CR>")                                                                              -- Force quit
+map("n", "<leader>fc", "<cmd> Pick files cwd='~/.config/nvim/' <CR>")                                                -- Modify config
+map("n", "<leader>ft", "<cmd> Pick filetype <CR>")                                                                   -- Change file type
+map("n", "<leader>fr", "<cmd> edit! <CR>")                                                                           -- Reload file
+map("n", "<leader>of", "<cmd> Pick explorer cwd='$HOME' <CR>")                                                       -- Open file
+map("n", "<leader>ot", "<cmd> Pick hipatterns scope='all' <CR>")                                                     -- Open TODOs and similar
+map("n", "<leader>:", "<cmd> Pick commands <CR>")                                                                    -- Pick commands
+map("n", "<leader>sh", "<cmd> split <CR>")                                                                           -- Horizontal split
+map("n", "<leader>sv", "<cmd> vsplit <CR>")                                                                          -- Vertical split
+map("n", "<leader>wd", "<cmd> close <CR>")                                                                           -- Window close
+map("n", "<leader>bb", "<cmd> Pick buffers <CR>")                                                                    -- Buffers
+map("n", "<leader>bz", "<cmd> lua require('mini.misc').zoom() <CR>")                                                 -- Zoom current buffer
+map("n", "<leader>co", "<cmd> Pick colorscheme <CR>")                                                                -- Choose colorscheme
+map("n", "<leader>nn", "<cmd> cd ~/Repos/notes/ <CR><cmd> Pick files cwd='~/Repos/notes/' <CR>")                     -- Browse notes
+map("n", "<leader>nc", u.create_new_note)                                                                            -- Create new note and open it
+map("n", "<leader>tb", u.toggle_tabline)                                                                             -- Show / hide tab bar
 map("n", "<leader>aq", function() u.ask_ai(vim.fn.input("Query: ")) end)                                             -- Ask AI
 map({ "n", "v" }, "<leader>ai", function() u.ask_ai(vim.fn.input("Query: "), u.get_cur_sel_or_buf()) end)            -- AI using tgpt with current buffer context
 map("v", "<leader>ad", function() u.ask_ai("Describe the following code", u.get_current_selection()) end)            -- AI describe selected code
