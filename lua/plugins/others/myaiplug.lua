@@ -55,9 +55,38 @@ local get_cur_sel_or_buf = function()
 end
 
 local map = vim.keymap.set
-map("n", "<leader>aq", function() ask_ai(vim.fn.input("Query: ")) end)                                           -- Ask AI
-map({ "n", "v" }, "<leader>ai", function() ask_ai(vim.fn.input("Query: "), get_cur_sel_or_buf()) end)            -- AI using tgpt with current buffer context
-map("v", "<leader>ad", function() ask_ai("Describe the following code", get_current_selection()) end)            -- AI describe selected code
-map("n", "<leader>ac",
-    function() ask_ai("Implement the code which I indicated using text 'HERE'", get_lines_cur_buf(), true) end)  -- AI write code
-map({ "n", "v" }, "<leader>am", function() ask_ai("How would you improve this code?", get_cur_sel_or_buf()) end) -- AI improve code
+
+-- Ask AI
+map("n", "<leader>aq", function()
+    local prompt = vim.fn.input("Query: ")
+    ask_ai(prompt)
+end)
+
+-- Ask AI with current buffer or selection context
+map({ "n", "v" }, "<leader>ai", function()
+    local prompt = vim.fn.input("Query: ")
+    local context = get_cur_sel_or_buf()
+    ask_ai(prompt, context)
+end)
+
+-- AI describe selected code
+map("v", "<leader>ad", function()
+    local prompt = "Describe the following code"
+    local context = get_current_selection()
+    ask_ai(prompt, context)
+end)
+
+-- AI write code
+map("n", "<leader>ac", function()
+    local prompt = "Implement the code which I indicated using text 'HERE'"
+    local context = get_lines_cur_buf()
+    local only_code = true
+    ask_ai(prompt, context, only_code)
+end)
+
+-- AI improve code
+map({ "n", "v" }, "<leader>am", function()
+    local prompt = "How would you improve this code?"
+    local context = get_cur_sel_or_buf()
+    ask_ai(prompt, context)
+end)
