@@ -79,6 +79,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.encourage")
 -- require("plugins.others.nvim-rip-substitute")
 -- require("plugins.others.neocodeium")
+-- require("plugins.others.myaiplug")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
