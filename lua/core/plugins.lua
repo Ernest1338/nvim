@@ -6,6 +6,7 @@
 require("plugins.basics.mini")
 require("plugins.basics.termplug")
 require("plugins.basics.mini-pickaproject")
+-- require("plugins.basics.myaiplug")
 -- require("plugins.basics.nvim-treesitter")
 -- require("plugins.basics.mason")
 -- require("plugins.basics.fzf")
@@ -79,7 +80,6 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.encourage")
 -- require("plugins.others.nvim-rip-substitute")
 -- require("plugins.others.neocodeium")
--- require("plugins.others.myaiplug")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
