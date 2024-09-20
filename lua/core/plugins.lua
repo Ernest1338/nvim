@@ -60,6 +60,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.diffview")
 -- require("plugins.ui.bufferline")
 -- require("plugins.ui.barbar")
+-- require("plugins.ui.todo-comments")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")

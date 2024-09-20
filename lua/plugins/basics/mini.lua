@@ -23,7 +23,7 @@ now(function()
     local statusline = require("mini.statusline")
     statusline.setup({
         content = {
-            -- workaround for termplug when process exits
+            -- FIXME: workaround for termplug when process exits
             inactive = statusline.active
         }
     })
