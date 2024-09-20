@@ -58,6 +58,8 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.no-neck-pain")
 -- require("plugins.ui.drop")
 -- require("plugins.ui.diffview")
+-- require("plugins.ui.bufferline")
+-- require("plugins.ui.barbar")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
