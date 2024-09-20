@@ -11,7 +11,7 @@ local servers = {
                     library = { vim.env.VIMRUNTIME }
                 },
                 diagnostics = {
-                    globals = { "vim", "jit", "MiniPick", "MiniDeps", "MiniFiles", "MiniIcons" },
+                    globals = { "vim", "jit", "MiniPick", "MiniDeps", "MiniFiles", "MiniIcons", "MiniTabline" },
                 }
             }
         }
