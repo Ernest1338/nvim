@@ -41,7 +41,6 @@ local ask_ai = function(prompt, context, only_code)
 
     local cmd = "cat << EOF | tgpt --disable-input-limit --provider " ..
         provider .. " " .. additional .. " \'" .. prompt .. "\' \n " .. context .. "\nEOF\n"
-    print(cmd)
     vim.fn.termopen(cmd)
 
     aibufnr = aibufnr + 1
@@ -113,3 +112,5 @@ map({ "n", "v" }, "<leader>am", function()
     local context = get_cur_sel_or_buf()
     ask_ai(prompt, context)
 end)
+
+-- TODO: ability to continue the conversation (interactive mode? but that doesnt care if i give it a prompt which is an issue)
