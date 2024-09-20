@@ -25,7 +25,7 @@ local old_ask_ai = function(prompt, context, only_code)
     end)
 end
 
-local bufnr = 0
+local aibufnr = 0
 
 local ask_ai = function(prompt, context, only_code)
     if prompt == "" then return end
@@ -44,8 +44,8 @@ local ask_ai = function(prompt, context, only_code)
     print(cmd)
     vim.fn.termopen(cmd)
 
-    bufnr = bufnr + 1
-    vim.api.nvim_buf_set_name(buf, "AI answer " .. bufnr)
+    aibufnr = aibufnr + 1
+    vim.api.nvim_buf_set_name(buf, "AI answer " .. aibufnr)
 end
 
 local get_current_selection = function()
@@ -92,10 +92,10 @@ map({ "n", "v" }, "<leader>ai", function()
     ask_ai(prompt, context)
 end)
 
--- AI describe selected code
-map("v", "<leader>ad", function()
+-- AI describe code
+map({ "n", "v" }, "<leader>ad", function()
     local prompt = "Describe the following code"
-    local context = get_current_selection()
+    local context = get_cur_sel_or_buf()
     ask_ai(prompt, context)
 end)
 
