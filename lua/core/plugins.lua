@@ -61,6 +61,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.bufferline")
 -- require("plugins.ui.barbar")
 -- require("plugins.ui.todo-comments")
+-- require("plugins.ui.dropbar")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
@@ -84,6 +85,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.nvim-rip-substitute")
 -- require("plugins.others.neocodeium")
 -- require("plugins.others.grug-far")
+-- require("plugins.others.bookmarks")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
