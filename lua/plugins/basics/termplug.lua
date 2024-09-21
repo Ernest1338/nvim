@@ -3,8 +3,8 @@ local map = vim.keymap.set
 
 later(function()
     add("Ernest1338/termplug.nvim")
-    require("termplug").setup()
-    map({ "n", "t" }, "<A-i>", "<cmd> Term fish <CR>")
+    require("termplug").setup({ shell = "fish" })
+    map({ "n", "t" }, "<A-i>", "<cmd> Term <CR>")
     map("n", "<leader>gg", "<cmd> Term lazygit <CR>")
     map({ "n", "t" }, "<C-g>", "<cmd> Term lazygit <CR>")
     map({ "n", "t" }, "<A-a>", "<cmd> Term tgpt --provider duckduckgo -i <CR>")
