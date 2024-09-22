@@ -1,12 +1,7 @@
 local map = vim.keymap.set
+local u = require("core.utils")
 
-map("n", "K", function()
-    if #vim.lsp.diagnostic.get_line_diagnostics() == 0 then
-        vim.lsp.buf.hover()
-    else
-        vim.diagnostic.open_float()
-    end
-end)                                                                                          -- LSP button
+map("n", "K", u.lsp_key)                                                                      -- LSP key
 map("n", "<leader>lf", "<cmd> lua vim.lsp.buf.format({ async = true, timeout = 2000 }) <CR>") -- Format file
 map("n", "<leader>la", "<cmd> lua vim.lsp.buf.code_action() <CR>")                            -- LSP Code actions
 map("n", "<leader>ld", "<cmd> Pick diagnostic <CR>")                                          -- LSP Diagnostics

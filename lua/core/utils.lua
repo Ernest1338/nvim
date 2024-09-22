@@ -15,6 +15,14 @@ M.create_new_note = function()
     end
 end
 
+M.lsp_key = function()
+    if #vim.lsp.diagnostic.get_line_diagnostics() == 0 then
+        vim.lsp.buf.hover()
+    else
+        vim.diagnostic.open_float()
+    end
+end
+
 M.runtime_add = function(path)
     vim.o.runtimepath = vim.o.runtimepath .. "," .. path
 end
