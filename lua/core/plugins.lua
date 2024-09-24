@@ -62,6 +62,9 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.barbar")
 -- require("plugins.ui.todo-comments")
 -- require("plugins.ui.dropbar")
+-- require("plugins.ui.neo-tree")
+-- require("plugins.ui.vim-fern")
+-- require("plugins.ui.oil")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
