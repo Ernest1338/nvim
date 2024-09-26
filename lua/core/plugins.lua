@@ -19,12 +19,15 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.basics.persisted")
 
 -- [[ CMP ]]
+-- require("plugins.cmp.friendly-snippets")
+-- require("plugins.cmp.vim-snippets")
 -- require("plugins.cmp.luasnip")
 -- require("plugins.cmp.nvim-autopairs")
 -- require("plugins.cmp.nvim-cmp")
 -- require("plugins.cmp.nvim-snippets")
 -- require("plugins.cmp.epo-nvim")
 -- require("plugins.cmp.coq-nvim")
+-- require("plugins.cmp.nvim-snippy")
 
 -- [[ GIT ]]
 -- require("plugins.git.neogit")
