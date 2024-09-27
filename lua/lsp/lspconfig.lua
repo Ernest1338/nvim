@@ -36,7 +36,7 @@ local servers = {
         },
     },
     gopls = {},
-    tsserver = {},
+    ts_ls = {},
     -- volar = {},
     -- ruff = {},
     -- ruff_lsp = {},
