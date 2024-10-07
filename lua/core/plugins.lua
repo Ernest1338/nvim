@@ -70,6 +70,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.neo-tree")
 -- require("plugins.ui.vim-fern")
 -- require("plugins.ui.oil")
+-- require("plugins.ui.minty")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
@@ -81,6 +82,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.colorschemes.github-nvim-theme")
 -- require("plugins.colorschemes.sonokai")
 -- require("plugins.colorschemes.onedark")
+-- require("plugins.colorschemes.zenbones")
 
 -- [[ OTHERS ]]
 -- require("plugins.others.cube-timer")

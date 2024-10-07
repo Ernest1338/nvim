@@ -1,6 +1,6 @@
-local add, later = MiniDeps.add, MiniDeps.later
+local add, now = MiniDeps.add, MiniDeps.now
 
-later(function()
+now(function()
     add("EdenEast/nightfox.nvim")
     vim.cmd("colorscheme nightfox")
 end)
