@@ -30,6 +30,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.cmp.nvim-snippy")
 -- require("plugins.cmp.ultisnips")
 -- require("plugins.cmp.vim-easycomplete")
+-- require("plugins.cmp.blink-cmp")
 
 -- [[ GIT ]]
 -- require("plugins.git.neogit")
