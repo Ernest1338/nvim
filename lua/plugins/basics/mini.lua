@@ -170,7 +170,19 @@ later(function()
     hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
 
     -- TODO: switch to mini.completion and mini.pairs when either mini.completion update drops or neovim/pull/25541 lands
-    require("mini.completion").setup()
+    require("mini.completion").setup({
+        window = {
+            info = {
+                border = 'rounded',
+            },
+            signature = {
+                border = 'rounded',
+            }
+        },
+        lsp_completion = {
+            source_func = 'omnifunc',
+        }
+    })
     map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
     map('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
 

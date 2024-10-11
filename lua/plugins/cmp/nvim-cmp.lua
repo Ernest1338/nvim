@@ -1,8 +1,20 @@
 local add, later = MiniDeps.add, MiniDeps.later
 
 later(function()
+    -- add({
+    --     source = "hrsh7th/nvim-cmp",
+    --     depends = {
+    --         "hrsh7th/cmp-buffer",
+    --         "saadparwaiz1/cmp_luasnip",
+    --         "hrsh7th/cmp-nvim-lsp",
+    --         "hrsh7th/cmp-path",
+    --     }
+    -- })
+
+    -- NOTE: alternatively use this nvim-cmp fork
     add({
-        source = "hrsh7th/nvim-cmp",
+        source = "iguanacucumber/magazine.nvim",
+        name = "nvim-cmp",
         depends = {
             "hrsh7th/cmp-buffer",
             "saadparwaiz1/cmp_luasnip",
@@ -10,6 +22,7 @@ later(function()
             "hrsh7th/cmp-path",
         }
     })
+
     local luasnip = require("luasnip")
     local cmp = require("cmp")
     cmp.setup({

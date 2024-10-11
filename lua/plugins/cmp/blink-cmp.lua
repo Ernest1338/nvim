@@ -12,10 +12,26 @@ later(function()
 
     require("blink.cmp").setup({
         keymap = {
-            select_prev = { '<Up>', '<C-k>' },
-            select_next = { '<Down>', '<C-j>' },
+            select_prev = { '<S-Tab>', '<Up>', '<C-k>' },
+            select_next = { '<Tab>', '<Down>', '<C-j>' },
+            accept = '<Enter>',
             scroll_documentation_up = '<C-u>',
             scroll_documentation_down = '<C-d>',
         },
+        trigger = {
+            signature_help = {
+                enabled = true
+            }
+        },
+        windows = {
+            autocomplete = {
+                border = 'rounded',
+                draw = 'reversed',
+
+            },
+            documentation = {
+                border = 'rounded',
+            }
+        }
     })
 end)
