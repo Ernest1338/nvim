@@ -72,6 +72,8 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.vim-fern")
 -- require("plugins.ui.oil")
 -- require("plugins.ui.minty")
+require("plugins.ui.neoneedskey")
+require("plugins.ui.beastie")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
