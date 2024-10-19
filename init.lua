@@ -40,7 +40,7 @@ require("core.configs")
 require("core.mappings")
 
 require("mini.deps").setup({ job = { n_threads = 10 }, path = { package = path_package } })
-require("core.plugins")
+require("plugins")
 
 -- LSP setup (choose either one of those)
 MiniDeps.later(function()

@@ -75,6 +75,8 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.neoneedskey")
 -- require("plugins.ui.beastie")
 -- require("plugins.ui.modeline")
+-- require("plugins.ui.nvim-colorizer")
+-- require("plugins.ui.showkeys")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
