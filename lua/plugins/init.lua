@@ -103,6 +103,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.neocodeium")
 -- require("plugins.others.grug-far")
 -- require("plugins.others.bookmarks")
+-- require("plugins.others.supermaven")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
