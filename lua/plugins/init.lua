@@ -104,6 +104,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.grug-far")
 -- require("plugins.others.bookmarks")
 -- require("plugins.others.supermaven")
+-- require("plugins.others.live-share")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
