@@ -105,6 +105,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.bookmarks")
 -- require("plugins.others.supermaven")
 -- require("plugins.others.live-share")
+-- require("plugins.others.nvim-lightbulb")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
