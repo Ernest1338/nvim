@@ -23,6 +23,11 @@ M.lsp_key = function()
     end
 end
 
+M.lsp_format = function()
+    vim.lsp.buf.format({ async = true, timeout = 2000 })
+    vim.cmd("redrawstatus")
+end
+
 M.runtime_add = function(path)
     vim.o.runtimepath = vim.o.runtimepath .. "," .. path
 end
