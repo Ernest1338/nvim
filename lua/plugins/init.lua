@@ -77,6 +77,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.modeline")
 -- require("plugins.ui.nvim-colorizer")
 -- require("plugins.ui.showkeys")
+-- require("plugins.ui.nvim-lightbulb")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
@@ -91,21 +92,22 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.colorschemes.zenbones")
 -- require("plugins.colorschemes.neon")
 
+-- [[ AI ]]
+-- require("plugins.ai.codeium")
+-- require("plugins.ai.neocodeium")
+-- require("plugins.ai.supermaven")
+
 -- [[ OTHERS ]]
 -- require("plugins.others.cube-timer")
--- require("plugins.others.codeium")
 -- require("plugins.others.dap")
 -- require("plugins.others.dadbod")
 -- require("plugins.others.flash")
 -- require("plugins.others.nvim-spectre")
 -- require("plugins.others.encourage")
 -- require("plugins.others.nvim-rip-substitute")
--- require("plugins.others.neocodeium")
 -- require("plugins.others.grug-far")
 -- require("plugins.others.bookmarks")
--- require("plugins.others.supermaven")
 -- require("plugins.others.live-share")
--- require("plugins.others.nvim-lightbulb")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
