@@ -109,6 +109,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.bookmarks")
 -- require("plugins.others.live-share")
 -- require("plugins.others.conform")
+-- require("plugins.others.nvim-mdlink")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
