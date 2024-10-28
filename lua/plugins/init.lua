@@ -110,6 +110,8 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.live-share")
 -- require("plugins.others.conform")
 -- require("plugins.others.nvim-mdlink")
+-- require("plugins.others.markdown-preview")
+-- require("plugins.others.rainbow_csv")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
