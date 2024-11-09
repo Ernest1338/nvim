@@ -112,6 +112,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.nvim-mdlink")
 -- require("plugins.others.markdown-preview")
 -- require("plugins.others.rainbow_csv")
+-- require("plugins.others.training")
 
 --
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
