@@ -6,6 +6,7 @@
 require("plugins.basics.mini")
 require("plugins.basics.termplug")
 require("plugins.basics.mini-pickaproject")
+-- require("plugins.basics.snacks")
 -- require("plugins.basics.myaiplug")
 -- require("plugins.basics.nvim-treesitter")
 -- require("plugins.basics.mason")
@@ -78,6 +79,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.ui.nvim-colorizer")
 -- require("plugins.ui.showkeys")
 -- require("plugins.ui.nvim-lightbulb")
+-- require("plugins.ui.timerly")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
