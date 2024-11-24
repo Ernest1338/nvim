@@ -115,6 +115,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.markdown-preview")
 -- require("plugins.others.rainbow_csv")
 -- require("plugins.others.training")
+-- require("plugins.others.lazydev")
 -- require("plugins.others.other")
 
 --
