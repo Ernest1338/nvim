@@ -122,7 +122,7 @@ require("plugins.basics.mini-pickaproject")
 -- [[ LOCAL PLUGIN DEVELOPMENT ]] --
 --
 
-local u = require("core.utils")
+-- local u = require("core.utils")
 
 -- u.runtime_add("~/Repos/termplug.nvim")
 -- MiniDeps.later(function()
