@@ -75,25 +75,32 @@ vim.o.cmdheight = 0
 vim.opt.shortmess:append("cI")
 
 -- Highlight on yank
-local yank_grp = u.new_augrp("YankHighlight")
 u.new_autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank({ timeout = 200 }) end,
-    group = yank_grp,
+    group = u.new_augrp("YankHighlight"),
 })
 
 -- Auto remove trailing spaces on write
-local trailing_grp = u.new_augrp("TrailingSpaces")
 u.new_autocmd("BufWritePre", {
     callback = function()
         local original_cursor = vim.api.nvim_win_get_cursor(0)
         vim.cmd([[keeppatterns %s/\s\+$//e]])
         vim.api.nvim_win_set_cursor(0, original_cursor)
     end,
-    group = trailing_grp,
+    group = u.new_augrp("TrailingSpaces"),
 })
 
--- NOTE: Hide the tab bar when only one buffer exists
--- vim.api.nvim_create_autocmd('BufEnter', {
+-- Hide numbers on terminal buffers
+-- u.new_autocmd("TermOpen", {
+--     callback = function()
+--         vim.opt_local.relativenumber = false
+--         vim.opt_local.number = false
+--     end,
+--     group = u.new_augrp("CustomTerm"),
+-- })
+
+-- Hide the tab bar when only one buffer exists
+-- u.new_autocmd('BufEnter', {
 --     callback = vim.schedule_wrap(function()
 --         local n_listed_bufs = 0
 --         for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
@@ -102,13 +109,11 @@ u.new_autocmd("BufWritePre", {
 --         vim.o.showtabline = n_listed_bufs > 1 and 2 or 0
 --     end),
 --     desc = 'Update tabline based on the number of listed buffers',
+--     group = u.new_augrp("HideTabBar"),
 -- })
 
--- NOTE: auto format on write
--- local format_grp = vim.api.nvim_create_augroup("FormatOnSave", { clear = true })
--- vim.api.nvim_create_autocmd("BufWritePre", {
---     callback = function()
---         vim.lsp.buf.format({ async = true, timeout = 2000 })
---     end,
---     group = format_grp,
+-- Auto format on write
+-- u.new_autocmd("BufWritePre", {
+--     callback = function() vim.lsp.buf.format({ async = false, timeout = 2000 }) end,
+--     group = u.new_augrp("FormatOnSave"),
 -- })
