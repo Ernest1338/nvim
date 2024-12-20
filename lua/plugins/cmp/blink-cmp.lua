@@ -5,7 +5,7 @@ local add, later = MiniDeps.add, MiniDeps.later
 later(function()
     add({
         source = "Saghen/blink.cmp",
-        checkout = "v0.2.0",
+        checkout = "v0.7.6",
         -- Optional
         depends = { "rafamadriz/friendly-snippets" }
     })
@@ -14,9 +14,9 @@ later(function()
         keymap = {
             select_prev = { '<S-Tab>', '<Up>', '<C-k>' },
             select_next = { '<Tab>', '<Down>', '<C-j>' },
-            accept = '<Enter>',
-            scroll_documentation_up = '<C-u>',
-            scroll_documentation_down = '<C-d>',
+            accept = { '<Enter>' },
+            scroll_documentation_up = { '<C-u>' },
+            scroll_documentation_down = { '<C-d>' },
         },
         trigger = {
             signature_help = {
