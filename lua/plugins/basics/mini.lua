@@ -209,6 +209,21 @@ later(function()
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
     map("n", "<leader>gb", "<Cmd> horiz Git blame -- % <CR>")
 
+    -- TODO: use when mini.completion gets support for snippets
+    -- local gen_loader = require('mini.snippets').gen_loader
+    -- require('mini.snippets').setup({
+    --     snippets = {
+    --         gen_loader.from_file('~/.config/nvim/snippets/global.json'),
+    --         gen_loader.from_lang(),
+    --     },
+    --     mappings = {
+    --         expand = '<C-e>',
+    --         jump_next = '<C-l>',
+    --         jump_prev = '<C-h>',
+    --         stop = '<C-c>',
+    --     },
+    -- })
+
     vim.notify = require("mini.notify").make_notify()
     -- hl(0, "MiniNotifyNormal", { bg = "NONE", fg = "#525052" })
     -- require("mini.notify").setup({
