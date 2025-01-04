@@ -116,6 +116,7 @@ require("plugins.basics.mini-pickaproject")
 -- require("plugins.others.rainbow_csv")
 -- require("plugins.others.training")
 -- require("plugins.others.lazydev")
+-- require("plugins.others.gamify")
 -- require("plugins.others.other")
 
 --
