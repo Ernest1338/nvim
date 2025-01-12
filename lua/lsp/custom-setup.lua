@@ -52,6 +52,12 @@ local servers = {
         root_files = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
         settings = {}
     },
+    c = {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+        cmd = { "clangd" },
+        root_files = { "Makefile", ".clangd", ".clang-tidy", ".clang-format", ".git" },
+        settings = {}
+    },
     -- vue = {
     --     filetypes = { "vue" },
     --     cmd = { "vue-language-server", "--stdio" },
