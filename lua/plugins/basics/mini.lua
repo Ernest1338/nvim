@@ -89,6 +89,7 @@ later(function()
         }
     })
 
+    -- NOTE: there is a issue that the first buffer doesn't get deleted when opened another one using mini.pick
     require("mini.pick").setup({
         mappings = {
             move_up = "<C-k>",
@@ -147,6 +148,36 @@ later(function()
             window = { config = { width = 20, col = vim.o.columns } }
         })
     end
+    MiniPick.registry.project = function()
+        local projects = {
+            { name = "config_nvim", path = "~/.config/nvim" },
+            { name = "black",       path = "~/Repos/black" },
+        }
+        local items = {}
+        for _, p in ipairs(projects) do items[#items + 1] = p.name .. string.rep(" ", 40 - #p.name) .. "| " .. p.path end
+        MiniPick.ui_select(items, { prompt = "Select a project:" }, function(_, i)
+            if i then
+                vim.cmd("cd " .. projects[i].path)
+                MiniPick.builtin.files()
+            end
+        end)
+    end
+    map("n", "<leader>pp", "<cmd> Pick project <CR>")                                                -- Projects
+    map("n", "<leader>pe", "<cmd> edit ~/.config/nvim/lua/plugins/basics/mini.lua|153 <CR>")         -- Edit projects file
+    map("n", "<leader>fd", "<cmd> Pick grep_live <CR>")                                              -- Search project
+    map("n", "<leader>fD", "<cmd> Pick buf_lines scope='current' <CR>")                              -- Search current file
+    map("n", "<leader><leader>", "<cmd> Pick files <CR>")                                            -- Find files
+    map("n", "<leader>fc", "<cmd> Pick files cwd='~/.config/nvim/' <CR>")                            -- Modify config
+    map("n", "<leader>ft", "<cmd> Pick filetype <CR>")                                               -- Change file type
+    map("n", "<leader>of", "<cmd> Pick explorer cwd='$HOME' <CR>")                                   -- Open file
+    map("n", "<leader>ot", "<cmd> Pick hipatterns scope='all' <CR>")                                 -- Open TODOs and similar
+    map("n", "<leader>:", "<cmd> Pick commands <CR>")                                                -- Pick commands
+    map("n", "<leader>bb", "<cmd> Pick buffers <CR>")                                                -- Buffers
+    map("n", "<leader>co", "<cmd> Pick colorscheme <CR>")                                            -- Choose colorscheme
+    map("n", "<leader>nn", "<cmd> cd ~/Repos/notes/ <CR><cmd> Pick files cwd='~/Repos/notes/' <CR>") -- Browse notes
+    map("n", "<f2>", "<cmd> Pick keymaps <CR>")                                                      -- Show keymaps
+    map("n", "<f3>", "<cmd> Pick help <CR>")                                                         -- Neovim help pages
+    map("n", ";", "<cmd> Pick commands <CR>")                                                        -- Quick command
 
     local hipatterns = require("mini.hipatterns")
     local hi_words = require("mini.extra").gen_highlighter.words
@@ -322,6 +353,8 @@ later(function()
     -- require("mini.visits").setup()
 
     -- require("mini.align").setup()
+
+    map("n", "<leader>bz", "<cmd> lua require('mini.misc').zoom() <CR>") -- Zoom current buffer
 
     require("mini.extra").setup()
 end)

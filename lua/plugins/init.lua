@@ -5,7 +5,7 @@
 -- [[ BASICS ]]
 require("plugins.basics.mini")
 require("plugins.basics.termplug")
-require("plugins.basics.mini-pickaproject")
+-- require("plugins.basics.mini-pickaproject")
 -- require("plugins.basics.snacks")
 -- require("plugins.basics.nvim-treesitter")
 -- require("plugins.basics.mason")
