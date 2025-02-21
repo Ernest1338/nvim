@@ -1,7 +1,7 @@
 local u = require("core.utils")
 
 -- colorscheme
-vim.cmd("colorscheme monokai-pro")
+vim.cmd("colorscheme tokyonight")
 
 -- relative numbers
 vim.wo.number = true
