@@ -79,6 +79,7 @@ require("plugins.basics.termplug")
 -- require("plugins.ui.showkeys")
 -- require("plugins.ui.nvim-lightbulb")
 -- require("plugins.ui.timerly")
+-- require("plugins.ui.hunk")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
