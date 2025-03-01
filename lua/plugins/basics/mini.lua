@@ -89,7 +89,6 @@ later(function()
         }
     })
 
-    -- NOTE: there is a issue that the first buffer doesn't get deleted when opened another one using mini.pick
     require("mini.pick").setup({
         mappings = {
             move_up = "<C-k>",
