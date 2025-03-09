@@ -198,8 +198,23 @@ later(function()
     hl(0, 'MiniHipatternsNote', { fg = normal["bg"], bg = "#10b981", bold = true })
     hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
 
-    -- TODO: switch to mini.completion and mini.pairs when either mini.completion update drops or neovim/pull/25541 lands
-    require("mini.completion").setup({
+    -- TODO: use when mini.snippets get's lsp mocking support
+    -- local gen_loader = require('mini.snippets').gen_loader
+    -- require('mini.snippets').setup({
+    --     snippets = {
+    --         gen_loader.from_file('~/.config/nvim/snippets/global.json'),
+    --         gen_loader.from_lang(),
+    --     },
+    --     mappings = {
+    --         expand = '<C-e>',
+    --         jump_next = '<C-l>',
+    --         jump_prev = '<C-h>',
+    --         stop = '<C-c>',
+    --     },
+    -- })
+
+    local cmp = require("mini.completion")
+    cmp.setup({
         window = {
             info = {
                 border = 'rounded',
@@ -210,6 +225,7 @@ later(function()
         },
         lsp_completion = {
             source_func = 'omnifunc',
+            -- snippet_insert = cmp.default_snippet_insert, -- NOTE: this should be the default
         }
     })
     map('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { noremap = true, expr = true })
@@ -237,21 +253,6 @@ later(function()
     map("n", "<leader>gS", "<cmd> Git status <CR>")
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
     map("n", "<leader>gb", "<Cmd> horiz Git blame -- % <CR>")
-
-    -- TODO: use when mini.completion gets support for snippets
-    -- local gen_loader = require('mini.snippets').gen_loader
-    -- require('mini.snippets').setup({
-    --     snippets = {
-    --         gen_loader.from_file('~/.config/nvim/after/snippets/global.json'),
-    --         gen_loader.from_lang(),
-    --     },
-    --     mappings = {
-    --         expand = '<C-e>',
-    --         jump_next = '<C-l>',
-    --         jump_prev = '<C-h>',
-    --         stop = '<C-c>',
-    --     },
-    -- })
 
     vim.notify = require("mini.notify").make_notify()
     -- hl(0, "MiniNotifyNormal", { bg = "NONE", fg = "#525052" })
