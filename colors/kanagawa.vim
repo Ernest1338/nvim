@@ -231,7 +231,7 @@ exe 'hi DiagnosticUnderlineHint' .  ' gui=undercurl  guisp=' . s:p["cyan"]
 
 "My changes
 exe 'hi TabLine' . s:bg_bg_dim . s:fg_fg_alt
-exe 'hi TabLineSel' . ' cterm=bold gui=bold ' . s:bg_bg_alt
+exe 'hi TabLineSel' . ' cterm=bold gui=bold ' . s:bg_bg_alt . s:fg_fg
 hi! link MiniTablineModifiedCurrent TabLineSel
 exe 'hi MiniTablineModifiedHidden' . s:bg_bg_dim . s:fg_yellow
 exe 'hi MiniCursorword guifg=NONE gui=NONE cterm=NONE' . s:bg_bg_dim
