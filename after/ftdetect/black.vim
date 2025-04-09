@@ -1,1 +1,1 @@
-autocmd BufRead,BufNewFile *.blk set filetype=javascript
+autocmd BufRead,BufNewFile *.blk set filetype=black | set syntax=javascript
