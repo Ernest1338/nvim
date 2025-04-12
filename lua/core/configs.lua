@@ -90,6 +90,9 @@ u.new_autocmd("BufWritePre", {
     group = u.new_augrp("TrailingSpaces"),
 })
 
+-- -- Enable virtual lines
+-- vim.diagnostic.config({ virtual_lines = true })
+
 -- Hide numbers on terminal buffers
 -- u.new_autocmd("TermOpen", {
 --     callback = function()

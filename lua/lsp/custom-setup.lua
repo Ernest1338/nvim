@@ -16,6 +16,7 @@ local servers = {
             }
         }
     },
+
     rust = {
         filetypes = { "rust" },
         cmd = { "rust-analyzer" },
@@ -30,6 +31,7 @@ local servers = {
             }
         }
     },
+
     python = {
         filetypes = { "python" },
         cmd = { "pylsp" },
@@ -46,67 +48,52 @@ local servers = {
             }
         }
     },
+
     typescript = {
         filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
         cmd = { "typescript-language-server", "--stdio" },
         root_files = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-        settings = {}
     },
+
     c = {
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
         cmd = { "clangd" },
         root_files = { "Makefile", ".clangd", ".clang-tidy", ".clang-format", ".git" },
-        settings = {}
     },
+
     -- vue = {
     --     filetypes = { "vue" },
     --     cmd = { "vue-language-server", "--stdio" },
     --     root_files = { "node_modules", "package.json", ".git" },
-    --     settings = {}
     -- },
+
     go = {
         filetypes = { "go" },
         cmd = { "gopls" },
         root_files = { "go.work", "go.mod", ".git" },
-        settings = {}
     }
 }
 
-local function start_lsp(name, cmd, root_files, settings)
-    local on_attach = function(client, _) -- _ = bufnr
-        -- disabled, because it breaks highlighting and makes it slugish
+for name, config in pairs(servers) do
+    config.on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = nil
+        require("lsp.mappings")
     end
 
-    local on_init = function(client)
-        client.settings = settings
+    config.on_init = function(client)
+        client.settings = config.settings
     end
 
-    local root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1])
-    local client = vim.lsp.start({
-        name = name,
-        cmd = cmd,
-        root_dir = root_dir,
-        on_attach = on_attach,
-        on_init = on_init
-    })
-    if client == nil then
-        vim.notify("Failed to start LSP server")
-        return
-    end
+    vim.lsp.config[name] = {
+        cmd = config.cmd,
+        root_markers = config.root_files,
+        filetypes = config.filetypes,
+        settings = config.settings,
+        on_attach = config.on_attach,
+        on_init = config.on_init,
+    }
 
-    vim.lsp.buf_attach_client(0, client)
-end
-
-local function setup_lsp(group, name, pattern, cmd, root_files, settings)
-    vim.api.nvim_create_autocmd("FileType", {
-        group = group,
-        pattern = pattern,
-        callback = function()
-            start_lsp(name, cmd, root_files, settings)
-            require("lsp.mappings")
-        end
-    })
+    vim.lsp.enable(name)
 end
 
 vim.api.nvim_create_user_command("LspStop", function()
@@ -123,19 +110,6 @@ vim.api.nvim_create_user_command("LspRestart", function()
     vim.cmd("edit")
 end, {
     desc = "Restart LSP connected to current buffer",
-    nargs = "?",
-})
-
-vim.api.nvim_create_user_command("LspStart", function()
-    local ftype = vim.o.filetype
-    for name, config in pairs(servers) do
-        if config.pattern == ftype then
-            start_lsp(name, config.cmd, config.root_files, config.settings)
-            return
-        end
-    end
-end, {
-    desc = "Manually start LSP server if possible and attach to current buffer",
     nargs = "?",
 })
 
@@ -166,8 +140,3 @@ end, {
     desc = "Open LSP logs",
     nargs = "?",
 })
-
-local group = vim.api.nvim_create_augroup("UserLspStart", { clear = true })
-for name, config in pairs(servers) do
-    setup_lsp(group, name, config.filetypes, config.cmd, config.root_files, config.settings)
-end
