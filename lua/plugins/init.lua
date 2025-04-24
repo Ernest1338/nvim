@@ -99,6 +99,7 @@ require("plugins.basics.termplug")
 -- require("plugins.ai.codeium")
 -- require("plugins.ai.neocodeium")
 -- require("plugins.ai.supermaven")
+-- require("plugins.ai.copilot")
 
 -- [[ OTHERS ]]
 -- require("plugins.others.cube-timer")
