@@ -233,9 +233,9 @@ later(function()
     hl(0, 'MiniHipatternsNote', { fg = normal["bg"], bg = "#10b981", bold = true })
     hl(0, "MiniHipatternsPerf", { fg = normal["bg"], bg = "#bb9af7", bold = true })
 
-    -- TODO: use when mini.snippets get's lsp mocking support
-    -- local gen_loader = require('mini.snippets').gen_loader
-    -- require('mini.snippets').setup({
+    -- local snippets = require("mini.snippets")
+    -- local gen_loader = snippets.gen_loader
+    -- snippets.setup({
     --     snippets = {
     --         gen_loader.from_file('~/.config/nvim/snippets/global.json'),
     --         gen_loader.from_lang(),
@@ -247,6 +247,7 @@ later(function()
     --         stop = '<C-c>',
     --     },
     -- })
+    -- snippets.start_lsp_server()
 
     local cmp = require("mini.completion")
     cmp.setup({
