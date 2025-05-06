@@ -290,6 +290,11 @@ later(function()
     map("n", "<leader>go", "<Cmd> lua MiniDiff.toggle_overlay() <CR>")
     map("n", "<leader>gb", "<Cmd> horiz Git blame -- % <CR>")
 
+    -- `jk` to escape to normal mode from eg insert mode
+    -- local map_combo = require('mini.keymap').map_combo
+    -- local mode = { 'i', 'c', 'x', 's' }
+    -- map_combo(mode, 'jk', '<BS><BS><Esc>')
+
     vim.notify = require("mini.notify").make_notify()
     -- hl(0, "MiniNotifyNormal", { bg = "NONE", fg = "#525052" })
     -- require("mini.notify").setup({
