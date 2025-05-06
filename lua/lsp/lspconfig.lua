@@ -1,10 +1,10 @@
 MiniDeps.add("neovim/nvim-lspconfig")
 local lspconfig = require("lspconfig")
 
-local on_attach = function(client, _) -- _ = bufnr
+local on_attach = function(client, bufnr)
     -- disabled, because it breaks highlighting and makes it slugish
     client.server_capabilities.semanticTokensProvider = nil
-    require("lsp.mappings")
+    require("lsp.mappings").setup_mappings(bufnr)
 end
 
 local servers = {

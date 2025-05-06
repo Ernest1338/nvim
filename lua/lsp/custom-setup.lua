@@ -77,7 +77,7 @@ local servers = {
 for name, config in pairs(servers) do
     config.on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = nil
-        require("lsp.mappings")
+        require("lsp.mappings").setup_mappings(bufnr)
     end
 
     config.on_init = function(client)
