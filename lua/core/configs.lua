@@ -76,7 +76,7 @@ vim.opt.shortmess:append("cI")
 
 -- Highlight on yank
 u.new_autocmd("TextYankPost", {
-    callback = function() vim.highlight.on_yank({ timeout = 200 }) end,
+    callback = function() vim.hl.on_yank({ timeout = 200 }) end,
     group = u.new_augrp("YankHighlight"),
 })
 
