@@ -92,8 +92,14 @@ u.new_autocmd("BufWritePre", {
     group = u.new_augrp("TrailingSpaces"),
 })
 
--- -- Enable virtual lines
--- vim.diagnostic.config({ virtual_lines = true })
+-- Enable virtual text for errors on current line
+vim.diagnostic.config({
+    virtual_text = {
+        current_line = true,
+        prefix = "•",
+        severity = "ERROR"
+    }
+})
 
 -- Hide numbers on terminal buffers
 -- u.new_autocmd("TermOpen", {
