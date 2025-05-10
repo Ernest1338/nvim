@@ -66,6 +66,8 @@ vim.o.splitkeep = "topline"
 
 vim.o.termguicolors = true
 
+vim.o.winborder = "rounded"
+
 -- folding support with treesitter
 -- vim.o.foldmethod = "expr"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"

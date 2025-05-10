@@ -16,7 +16,8 @@ M.create_new_note = function()
 end
 
 M.lsp_key = function()
-    if #vim.diagnostic.get(0) == 0 then
+    local cur_line_diag_count = #vim.diagnostic.count(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+    if cur_line_diag_count == 0 then
         vim.lsp.buf.hover()
     else
         vim.diagnostic.open_float()
