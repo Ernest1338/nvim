@@ -395,6 +395,14 @@ later(function()
 
     -- require("mini.align").setup()
 
+    -- local indentscope = require("mini.indentscope")
+    -- indentscope.setup({
+    --     draw = {
+    --         delay = 0,
+    --         animation = indentscope.gen_animation.none(),
+    --     }
+    -- })
+
     map("n", "<leader>bz", "<cmd> lua require('mini.misc').zoom() <CR>") -- Zoom current buffer
 
     require("mini.extra").setup()

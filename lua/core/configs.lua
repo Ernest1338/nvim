@@ -1,74 +1,78 @@
 local u = require("core.utils")
 
--- colorscheme
+-- Colorscheme
 vim.cmd("colorscheme tokyonight")
 
--- relative numbers
+-- Relative numbers
 vim.wo.number = true
 -- vim.wo.relativenumber = true
 
--- incremental search
+-- Incremental search
 vim.o.incsearch = true
 
--- hide the searches
+-- Hide the searches
 vim.o.hlsearch = false
 
--- smart tab + tab width to 4
+-- Smart tab + tab width to 4
 vim.o.shiftwidth = 4
 vim.o.smartindent = true
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
 vim.o.expandtab = true
 
--- no text wrap
+-- No text wrap
 -- vim.o.wrap = false
 
--- scroll when the cursor is 4 line from the bottom
+-- Scroll when the cursor is 4 line from the bottom
 vim.o.scrolloff = 4
 
--- hightlight current line
+-- Hightlight current line
 vim.o.cursorline = true
 
--- prevent jumping of the screen
+-- Prevent jumping of the screen
 vim.wo.signcolumn = "yes"
 
--- enable break indent
+-- Enable break indent
 vim.o.breakindent = true
 
--- case insensitive search
+-- Case insensitive search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- decrease update time
+-- Decrease update time
 vim.o.updatetime = 1000
 
--- better completion experience
+-- Better completion experience
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
--- dont redraw the screen when executing macros / regexes
+-- Dont redraw the screen when executing macros / regexes
 vim.o.lazyredraw = true
 
--- save undo history to a file
+-- Save undo history to a file
 vim.o.undofile = true
 
--- automatically change CWD (should not cause issues but does - telescope project wide search breakes)
+-- Automatically change CWD (should not cause issues but does - telescope project wide search breakes)
 -- vim.o.autochdir = true
 
--- avoid disapearing status line
+-- Avoid disapearing status line
 vim.o.showmode = false
 vim.o.showcmd = false
 
--- set the long line highlight
+-- Set the long line highlight
 vim.o.colorcolumn = "90"
 
--- keep the top line when creating a split
+-- Keep the top line when creating a split
 vim.o.splitkeep = "topline"
 
 vim.o.termguicolors = true
 
 vim.o.winborder = "rounded"
 
--- folding support with treesitter
+-- Highlight spaces as dots at the beginning of a lnie
+vim.opt.listchars = { lead = "·" }
+vim.opt.list = true
+
+-- Folding support with treesitter
 -- vim.o.foldmethod = "expr"
 -- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
