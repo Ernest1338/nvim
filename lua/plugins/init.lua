@@ -80,6 +80,7 @@ require("plugins.basics.termplug")
 -- require("plugins.ui.nvim-lightbulb")
 -- require("plugins.ui.timerly")
 -- require("plugins.ui.hunk")
+-- require("plugins.ui.ui-nvim")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
@@ -119,6 +120,8 @@ require("plugins.basics.termplug")
 -- require("plugins.others.training")
 -- require("plugins.others.lazydev")
 -- require("plugins.others.gamify")
+-- require("plugins.others.hardtime")
+-- require("plugins.others.bloat")
 -- require("plugins.others.other")
 
 --
