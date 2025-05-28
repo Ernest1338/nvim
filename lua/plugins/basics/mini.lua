@@ -166,22 +166,6 @@ later(function()
             }
         })
     end
-    MiniPick.registry.colorscheme = function()
-        local items = vim.fn.getcompletion("", "color")
-        local preview = function(_, item) vim.cmd("colorscheme " .. item) end
-        MiniPick.start({
-            source = {
-                name = "Colorscheme",
-                items = items,
-                preview = preview,
-                choose = function(colorscheme)
-                    if colorscheme == nil then return end
-                    vim.cmd("colorscheme " .. colorscheme)
-                end
-            },
-            window = { config = { width = 20, col = vim.o.columns } }
-        })
-    end
     MiniPick.registry.project = function()
         local projects = {
             { name = "config_nvim", path = "~/.config/nvim" },
@@ -207,7 +191,7 @@ later(function()
     map("n", "<leader>ot", "<cmd> Pick hipatterns scope='all' <CR>")                                 -- Open TODOs and similar
     map("n", "<leader>:", "<cmd> Pick commands <CR>")                                                -- Pick commands
     map("n", "<leader>bb", "<cmd> Pick buffers <CR>")                                                -- Buffers
-    map("n", "<leader>co", "<cmd> Pick colorscheme <CR>")                                            -- Choose colorscheme
+    map("n", "<leader>co", "<cmd> Pick colorschemes <CR>")                                           -- Choose colorscheme
     map("n", "<leader>nn", "<cmd> cd ~/Repos/notes/ <CR><cmd> Pick files cwd='~/Repos/notes/' <CR>") -- Browse notes
     map("n", "<f2>", "<cmd> Pick keymaps <CR>")                                                      -- Show keymaps
     map("n", "<f3>", "<cmd> Pick help <CR>")                                                         -- Neovim help pages
