@@ -69,7 +69,7 @@ vim.o.termguicolors = true
 vim.o.winborder = "rounded"
 
 -- Highlight spaces as dots at the beginning of a lnie
-vim.opt.listchars = { lead = "·" }
+vim.opt.listchars:append({ lead = "·" })
 vim.opt.list = true
 
 -- Folding support with treesitter
