@@ -1,50 +1,100 @@
-local old_ask_ai = function(prompt, context, only_code)
+local aibufnr = 0
+local conversation_history = {}
+local conversation_buf
+
+-- Helper to strip <think>…</think> sections
+local function strip_think_sections(s)
+    -- remove any <think>…</think> blocks
+    return s:gsub("<think>.-</think>", "")
+end
+
+local function ask_ai(prompt, context)
+    if prompt == "" then return end
+    context = context or ""
+
+    -- Merge context and prompt into a single user message
+    local text = (context ~= "" and context .. "\n" or "") .. prompt
+    local payload = vim.fn.json_encode({
+        model    = "deepseek-r1",
+        messages = { { role = "user", content = text } },
+    })
+
+    -- Create the buffer and window
     local buf = vim.api.nvim_create_buf(true, true)
-    vim.api.nvim_set_option_value('filetype', 'markdown', { buf = buf })
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Thinking..." })
+    vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+    aibufnr = aibufnr + 1
+    vim.api.nvim_buf_set_name(buf, "AI answer " .. aibufnr)
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "AI is thinking..." })
     vim.api.nvim_set_current_buf(buf)
 
-    local provider = "duckduckgo" -- phind by default
-    if context ~= nil and #context > 0 then
-        prompt = context .. '\n' .. prompt
-    end
+    -- Call llm7.io
+    vim.schedule(function()
+        local resp = vim.fn.system(
+            "curl -s -X POST -H 'Content-Type: application/json' -d "
+            .. vim.fn.shellescape(payload)
+            .. " https://api.llm7.io/v1/chat/completions"
+        )
 
-    local additional = '-q' -- quiet
-    if only_code == true then
-        additional = '-c'   -- only code (quiet mode doesn't support -c)
-    end
+        -- Extract or fallback
+        local ok, decoded = pcall(vim.fn.json_decode, resp)
+        local content = ok and decoded.choices and decoded.choices[1].message.content or resp
 
-    vim.system({ 'tgpt', '--provider', provider, additional, '\'' .. prompt .. '\'' }, { text = true }, function(o)
-        if o.code ~= 0 then
-            o.stdout = "Failed to execute TGPT: " .. o.stderr
-        end
-        local lines = vim.split(o.stdout:gsub("\r", ""), "\n")
-        vim.schedule(function()
-            vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-        end)
+        -- strip any <think>…</think> sections
+        content = strip_think_sections(content)
+
+        -- Show answer in new markdown buffer
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(content, "\n"))
     end)
 end
 
-local aibufnr = 0
+local function chat_ai(prompt)
+    if not prompt or prompt == "" then return end
+    table.insert(conversation_history, { role = "user", content = prompt })
 
-local ask_ai = function(prompt, context, only_code)
-    if prompt == "" then return end
-    if context == nil then context = "" end
-    local additional = ''
-    if only_code == true then additional = '-c' end
+    local payload = vim.fn.json_encode({
+        model    = "deepseek-r1",
+        messages = conversation_history,
+    })
 
-    local provider = "duckduckgo" -- or phind
+    -- prepare or reuse chat buffer
+    if not (conversation_buf and vim.api.nvim_buf_is_valid(conversation_buf)) then
+        conversation_buf = vim.api.nvim_create_buf(true, true)
+        vim.api.nvim_buf_set_option(conversation_buf, "filetype", "markdown")
+    end
+    local buf = conversation_buf
+    aibufnr = aibufnr + 1
+    vim.api.nvim_buf_set_name(buf, "AI chat " .. aibufnr)
 
-    local buf = vim.api.nvim_create_buf(true, true)
-    vim.api.nvim_set_option_value('filetype', 'markdown', { buf = buf })
+    -- append user prompt
+    vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "", "> " .. prompt, "" })
     vim.api.nvim_set_current_buf(buf)
 
-    local cmd = "cat << EOF | tgpt --disable-input-limit --provider " ..
-        provider .. " " .. additional .. " \'" .. prompt .. "\' \n " .. context .. "\nEOF\n"
-    vim.fn.termopen(cmd)
+    -- call API
+    vim.schedule(function()
+        local resp = vim.fn.system(
+            "curl -s -X POST -H 'Content-Type: application/json' -d "
+            .. vim.fn.shellescape(payload)
+            .. " https://api.llm7.io/v1/chat/completions"
+        )
+        local ok, dec = pcall(vim.fn.json_decode, resp)
+        local content = ok and dec.choices and dec.choices[1].message.content or resp
 
-    aibufnr = aibufnr + 1
-    vim.api.nvim_buf_set_name(buf, "AI answer " .. aibufnr)
+        -- strip any <think>…</think> sections
+        content = strip_think_sections(content)
+
+        table.insert(conversation_history, { role = "assistant", content = content })
+
+        -- split into lines to avoid newline-in-item error
+        local reply_lines = vim.split(content, "\n", { plain = true })
+        vim.api.nvim_buf_set_lines(buf, -1, -1, false, reply_lines)
+        vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "" })
+    end)
+end
+
+local function chat_ai_reset()
+    conversation_history = {}
+    conversation_buf = nil
+    print("AI conversation reset")
 end
 
 local get_current_selection = function()
@@ -99,7 +149,7 @@ map({ "n", "v" }, "<leader>ad", function()
 end)
 
 -- AI write code
-map({ "n", "v" }, "<leader>ac", function()
+map({ "n", "v" }, "<leader>ah", function()
     local prompt =
     'Implement the code which I indicated using text "HERE". Dont include all of the code, just show me the code you written.'
     local context = get_cur_sel_or_buf()
@@ -113,4 +163,11 @@ map({ "n", "v" }, "<leader>am", function()
     ask_ai(prompt, context)
 end)
 
--- TODO: ability to continue the conversation (interactive mode? but that doesnt care if i give it a prompt which is an issue)
+-- AI conversation
+map("n", "<leader>ac", function()
+    local p = vim.fn.input("[Chat AI]: ")
+    chat_ai(p)
+end)
+
+-- AI conversation reset
+map("n", "<leader>ar", chat_ai_reset)
