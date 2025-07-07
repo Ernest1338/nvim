@@ -101,6 +101,7 @@ require("plugins.basics.termplug")
 -- require("plugins.ai.neocodeium")
 -- require("plugins.ai.supermaven")
 -- require("plugins.ai.copilot")
+-- require("plugins.ai.avante")
 
 -- [[ OTHERS ]]
 -- require("plugins.others.cube-timer")
