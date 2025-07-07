@@ -170,6 +170,7 @@ later(function()
         local projects = {
             { name = "config_nvim", path = "~/.config/nvim" },
             { name = "black",       path = "~/Repos/black" },
+            { name = "notes",       path = "~/Repos/notes" },
         }
         local items = {}
         for _, p in ipairs(projects) do items[#items + 1] = p.name .. string.rep(" ", 40 - #p.name) .. "| " .. p.path end
@@ -181,7 +182,7 @@ later(function()
         end)
     end
     map("n", "<leader>pp", "<cmd> Pick project <CR>")                                                -- Projects
-    map("n", "<leader>pe", "<cmd> edit ~/.config/nvim/lua/plugins/basics/mini.lua|153 <CR>")         -- Edit projects file
+    map("n", "<leader>pe", "<cmd> edit ~/.config/nvim/lua/plugins/basics/mini.lua | /projects <CR>") -- Edit projects file
     map("n", "<leader>fd", "<cmd> Pick grep_live <CR>")                                              -- Search project
     map("n", "<leader>fD", "<cmd> Pick buf_lines scope='current' <CR>")                              -- Search current file
     map("n", "<leader><leader>", "<cmd> Pick files <CR>")                                            -- Find files
