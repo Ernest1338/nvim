@@ -2,10 +2,29 @@ local aibufnr = 0
 local conversation_history = {}
 local conversation_buf
 
+local model = "gpt-5-nano-2025-08-07"
+
 -- Helper to strip <think>…</think> sections
 local function strip_think_sections(s)
     -- remove any <think>…</think> blocks
     return s:gsub("<think>.-</think>", "")
+end
+
+-- Generic API caller
+local function call_ai_api(payload, on_complete)
+    vim.schedule(function()
+        local resp = vim.fn.system(
+            "curl -s -X POST -H 'Content-Type: application/json' -d "
+            .. vim.fn.shellescape(payload)
+            .. " https://api.llm7.io/v1/chat/completions"
+        )
+
+        local ok, decoded = pcall(vim.fn.json_decode, resp)
+        local content = ok and decoded.choices and decoded.choices[1].message.content or resp
+
+        content = strip_think_sections(content)
+        on_complete(content)
+    end)
 end
 
 local function ask_ai(prompt, context)
@@ -15,34 +34,20 @@ local function ask_ai(prompt, context)
     -- Merge context and prompt into a single user message
     local text = (context ~= "" and context .. "\n" or "") .. prompt
     local payload = vim.fn.json_encode({
-        model    = "deepseek-r1",
+        model    = model,
         messages = { { role = "user", content = text } },
     })
 
     -- Create the buffer and window
     local buf = vim.api.nvim_create_buf(true, true)
-    vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+    vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf })
     aibufnr = aibufnr + 1
     vim.api.nvim_buf_set_name(buf, "AI answer " .. aibufnr)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "AI is thinking..." })
     vim.api.nvim_set_current_buf(buf)
 
-    -- Call llm7.io
-    vim.schedule(function()
-        local resp = vim.fn.system(
-            "curl -s -X POST -H 'Content-Type: application/json' -d "
-            .. vim.fn.shellescape(payload)
-            .. " https://api.llm7.io/v1/chat/completions"
-        )
-
-        -- Extract or fallback
-        local ok, decoded = pcall(vim.fn.json_decode, resp)
-        local content = ok and decoded.choices and decoded.choices[1].message.content or resp
-
-        -- strip any <think>…</think> sections
-        content = strip_think_sections(content)
-
-        -- Show answer in new markdown buffer
+    -- Call the API
+    call_ai_api(payload, function(content)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(content, "\n"))
     end)
 end
@@ -52,14 +57,14 @@ local function chat_ai(prompt)
     table.insert(conversation_history, { role = "user", content = prompt })
 
     local payload = vim.fn.json_encode({
-        model    = "deepseek-r1",
+        model    = model,
         messages = conversation_history,
     })
 
     -- prepare or reuse chat buffer
     if not (conversation_buf and vim.api.nvim_buf_is_valid(conversation_buf)) then
         conversation_buf = vim.api.nvim_create_buf(true, true)
-        vim.api.nvim_buf_set_option(conversation_buf, "filetype", "markdown")
+        vim.api.nvim_set_option_value("filetype", "markdown", { buf = conversation_buf })
     end
     local buf = conversation_buf
     aibufnr = aibufnr + 1
@@ -69,22 +74,10 @@ local function chat_ai(prompt)
     vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "", "> " .. prompt, "" })
     vim.api.nvim_set_current_buf(buf)
 
-    -- call API
-    vim.schedule(function()
-        local resp = vim.fn.system(
-            "curl -s -X POST -H 'Content-Type: application/json' -d "
-            .. vim.fn.shellescape(payload)
-            .. " https://api.llm7.io/v1/chat/completions"
-        )
-        local ok, dec = pcall(vim.fn.json_decode, resp)
-        local content = ok and dec.choices and dec.choices[1].message.content or resp
-
-        -- strip any <think>…</think> sections
-        content = strip_think_sections(content)
-
+    -- Call the API
+    call_ai_api(payload, function(content)
         table.insert(conversation_history, { role = "assistant", content = content })
 
-        -- split into lines to avoid newline-in-item error
         local reply_lines = vim.split(content, "\n", { plain = true })
         vim.api.nvim_buf_set_lines(buf, -1, -1, false, reply_lines)
         vim.api.nvim_buf_set_lines(buf, -1, -1, false, { "" })
@@ -153,7 +146,7 @@ map({ "n", "v" }, "<leader>ah", function()
     local prompt =
     'Implement the code which I indicated using text "HERE". Dont include all of the code, just show me the code you written.'
     local context = get_cur_sel_or_buf()
-    ask_ai(prompt, context, true)
+    ask_ai(prompt, context)
 end)
 
 -- AI improve code
