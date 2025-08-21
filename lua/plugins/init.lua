@@ -82,6 +82,8 @@ require("plugins.basics.termplug")
 -- require("plugins.ui.hunk")
 -- require("plugins.ui.ui-nvim")
 -- require("plugins.ui.store")
+-- require("plugins.ui.fyler")
+-- require("plugins.ui.fff")
 
 -- [[ COLORSCHEMES ]]
 -- require("plugins.colorschemes.onedarkpro")
