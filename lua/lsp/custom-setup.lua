@@ -8,7 +8,7 @@ local servers = {
                 runtime = { version = "LuaJIT" },
                 workspace = {
                     checkThirdParty = false,
-                    library = { vim.env.VIMRUNTIME }
+                    library = { vim.env.VIMRUNTIME, "${3rd}/love2d/library" }
                 },
                 diagnostics = {
                     globals = { "vim", "jit", "MiniPick", "MiniDeps", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion", "Snacks" },
