@@ -7,7 +7,7 @@ later(function()
         depends = {
             'nvim-lua/plenary.nvim',
             'MunifTanjim/nui.nvim',
-            'echasnovski/mini.icons',
+            'nvim-mini/mini.icons',
             'zbirenbaum/copilot.lua'
         },
         hooks = { post_checkout = function() vim.cmd('make') end }
