@@ -260,6 +260,8 @@ later(function()
         }
     })
 
+    -- require("mini.cmdline").setup()
+
     require("mini.git").setup()
     map("n", "<leader>ga", "<cmd> Git add . <CR>")
     map("n", "<leader>gc", "<cmd> Git commit <CR>")
