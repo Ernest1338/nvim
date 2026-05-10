@@ -171,6 +171,8 @@ later(function()
             { name = "config_nvim", path = "~/.config/nvim" },
             { name = "black",       path = "~/Repos/black" },
             { name = "notes",       path = "~/Repos/notes" },
+            { name = "neuro-randki",       path = "~/Repos/neuro-randki" },
+            { name = "vulnerable app",       path = "~/Repos/Vulnerable-App" },
         }
         local items = {}
         for _, p in ipairs(projects) do items[#items + 1] = p.name .. string.rep(" ", 40 - #p.name) .. "| " .. p.path end
