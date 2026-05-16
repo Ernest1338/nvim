@@ -1,14 +1,10 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({
-        source = "hrsh7th/nvim-cmp",
-        depends = {
-            "hrsh7th/cmp-buffer",
-            "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-path",
-        }
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/hrsh7th/cmp-buffer',
+        'https://github.com/saadparwaiz1/cmp_luasnip',
+        'https://github.com/hrsh7th/cmp-nvim-lsp',
+        'https://github.com/hrsh7th/cmp-path',
+        'https://github.com/hrsh7th/nvim-cmp',
     })
 
     local luasnip = require("luasnip")
@@ -67,29 +63,29 @@ later(function()
         formatting = {
             format = function(_, vim_item)
                 local kind_icons = {
-                    Text = "",
+                    Text = "",
                     Method = "⍟",
                     Function = "∮",
-                    Constructor = "",
+                    Constructor = "",
                     Field = "⍑",
                     Variable = "⭗",
                     Class = "©",
-                    Interface = "",
-                    Module = "",
+                    Interface = "",
+                    Module = "",
                     Property = "℗",
-                    Unit = "",
+                    Unit = "",
                     Value = "⮈",
-                    Enum = "",
+                    Enum = "",
                     Keyword = "⌘",
-                    Snippet = "",
+                    Snippet = "",
                     Color = "☀",
                     File = "⛶",
-                    Reference = "",
+                    Reference = "",
                     Folder = "⛘",
-                    EnumMember = "",
+                    EnumMember = "",
                     Constant = "∁",
-                    Struct = "",
-                    Event = "",
+                    Struct = "",
+                    Event = "",
                     Operator = "∑",
                     TypeParameter = "∡"
                 }

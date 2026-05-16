@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("nvim-lualine/lualine.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/nvim-lualine/lualine.nvim' })
     require("lualine").setup({
         options = {
             theme = "gruvbox"

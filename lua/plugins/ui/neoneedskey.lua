@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("zSnails/NeoNeedsKey")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/zSnails/NeoNeedsKey' })
     require("NeoNeedsKey").setup()
 end)

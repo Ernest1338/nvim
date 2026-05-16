@@ -1,11 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({
-        source = "Saghen/blink.cmp",
-        checkout = "v1.6.0",
-        -- Optional
-        depends = { "rafamadriz/friendly-snippets" }
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/rafamadriz/friendly-snippets',
+        { src = 'https://github.com/Saghen/blink.cmp', version = 'v1.6.0' },
     })
 
     require("blink.cmp").setup({

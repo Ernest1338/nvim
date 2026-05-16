@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("Exafunction/codeium.vim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/Exafunction/codeium.vim' })
 
     vim.g.codeium_disable_bindings = 1
     vim.g.codeium_manual = true

@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("A7Lavinraj/fyler.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/A7Lavinraj/fyler.nvim' })
     require("fyler").setup({})
 end)

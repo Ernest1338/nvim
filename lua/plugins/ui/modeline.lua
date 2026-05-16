@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("nvimdev/modeline.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/nvimdev/modeline.nvim' })
     require("modeline").setup()
 end)

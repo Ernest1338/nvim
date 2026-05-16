@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("tomasky/bookmarks.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/tomasky/bookmarks.nvim' })
     require("bookmarks").setup()
 end)

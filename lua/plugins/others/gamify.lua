@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("GrzegorzSzczepanek/gamify.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/GrzegorzSzczepanek/gamify.nvim' })
     require("gamify")
 end)

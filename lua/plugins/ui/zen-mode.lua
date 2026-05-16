@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("folke/zen-mode.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/folke/zen-mode.nvim' })
 end)

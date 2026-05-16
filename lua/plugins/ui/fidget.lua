@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("j-hui/fidget.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/j-hui/fidget.nvim' })
     require("fidget").setup()
 end)

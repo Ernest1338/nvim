@@ -1,12 +1,10 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
+vim.schedule(function()
     -- Vimscript version
-    add("github/copilot.vim")
+    vim.pack.add({ 'https://github.com/github/copilot.vim' })
     vim.cmd("Copilot restart")
     -- NOTE: run `:Copilot setup` before using
 
     -- Pure lua replacement
-    -- add("zbirenbaum/copilot.lua")
+    -- vim.pack.add({ 'https://github.com/zbirenbaum/copilot.lua' })
     -- require("copilot").setup()
 end)

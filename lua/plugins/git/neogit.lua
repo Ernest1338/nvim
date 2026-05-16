@@ -1,6 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "NeogitOrg/neogit", depends = { "nvim-lua/plenary.nvim" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/nvim-lua/plenary.nvim',
+        'https://github.com/NeogitOrg/neogit',
+    })
     require("neogit").setup()
 end)

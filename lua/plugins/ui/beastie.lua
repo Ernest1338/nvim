@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("Abizrh/beastie.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/Abizrh/beastie.nvim' })
     require("beastie").setup({
         beasties = {
             {

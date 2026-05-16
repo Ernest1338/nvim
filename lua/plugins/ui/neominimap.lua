@@ -1,7 +1,9 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "Isrothy/neominimap.nvim", depends = { "nvim-treesitter/nvim-treesitter", "lewis6991/gitsigns.nvim" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/nvim-treesitter/nvim-treesitter',
+        'https://github.com/lewis6991/gitsigns.nvim',
+        'https://github.com/Isrothy/neominimap.nvim',
+    })
     require("neominimap").setup()
     vim.cmd("Neominimap toggle")
 end)

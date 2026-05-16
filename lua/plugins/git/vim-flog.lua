@@ -1,5 +1,6 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "rbong/vim-flog", depends = { "tpope/vim-fugitive" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/tpope/vim-fugitive',
+        'https://github.com/rbong/vim-flog',
+    })
 end)

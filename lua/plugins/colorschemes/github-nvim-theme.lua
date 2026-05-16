@@ -1,6 +1,2 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add("projekt0n/github-nvim-theme")
-    vim.cmd("colorscheme github_dark")
-end)
+vim.pack.add({ 'https://github.com/projekt0n/github-nvim-theme' })
+vim.cmd("colorscheme github_dark")

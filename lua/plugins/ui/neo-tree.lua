@@ -1,7 +1,7 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add({ source = "nvim-neo-tree/neo-tree.nvim", depends = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" } })
-    require("neo-tree").setup()
-    -- vim.cmd("Neotree")
-end)
+vim.pack.add({
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/MunifTanjim/nui.nvim',
+    'https://github.com/nvim-neo-tree/neo-tree.nvim',
+})
+require("neo-tree").setup()
+-- vim.cmd("Neotree")

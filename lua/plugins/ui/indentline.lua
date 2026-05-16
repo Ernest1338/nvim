@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("Yggdroot/indentLine")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/Yggdroot/indentLine' })
 end)

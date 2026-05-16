@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("tpope/vim-fugitive")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/tpope/vim-fugitive' })
 end)

@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("nvimdev/epo.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/nvimdev/epo.nvim' })
     require("epo").setup()
 end)

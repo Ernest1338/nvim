@@ -1,8 +1,4 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add("olimorris/persisted.nvim")
-    require("persisted").setup({
-        autoload = true,
-    })
-end)
+vim.pack.add({ 'https://github.com/olimorris/persisted.nvim' })
+require("persisted").setup({
+    autoload = true,
+})

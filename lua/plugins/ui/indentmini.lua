@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("nvimdev/indentmini.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/nvimdev/indentmini.nvim' })
     require("indentmini").setup({
         char = '┆',
         -- exclude = {},

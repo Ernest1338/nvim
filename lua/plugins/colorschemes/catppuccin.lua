@@ -1,6 +1,2 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add("catppuccin/nvim")
-    vim.cmd("colorscheme catppuccin")
-end)
+vim.pack.add({ 'https://github.com/catppuccin/nvim' })
+vim.cmd("colorscheme catppuccin")

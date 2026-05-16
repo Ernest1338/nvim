@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("mistweaverco/kulala.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/mistweaverco/kulala.nvim' })
     require("kulala").setup()
 end)

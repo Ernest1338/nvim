@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("dundalek/bloat.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/dundalek/bloat.nvim' })
 end)

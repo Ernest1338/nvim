@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("monkoose/neocodeium")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/monkoose/neocodeium' })
 
     local neocodeium = require("neocodeium")
     neocodeium.setup({

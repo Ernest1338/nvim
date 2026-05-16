@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("folke/persistence.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/folke/persistence.nvim' })
     require("persistence").setup()
 end)

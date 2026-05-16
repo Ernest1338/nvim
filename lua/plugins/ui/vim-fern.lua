@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("lambdalisue/vim-fern")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/lambdalisue/vim-fern' })
     -- vim.cmd("Fern .")
 end)

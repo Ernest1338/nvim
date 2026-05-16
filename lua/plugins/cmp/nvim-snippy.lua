@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("dcampos/nvim-snippy")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/dcampos/nvim-snippy' })
     require("snippy").setup({
         mappings = {
             is = {

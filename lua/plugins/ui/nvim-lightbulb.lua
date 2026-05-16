@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("kosayoda/nvim-lightbulb")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/kosayoda/nvim-lightbulb' })
     require("nvim-lightbulb").setup({
         autocmd = { enabled = true }
     })

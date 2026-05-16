@@ -1,7 +1,9 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/MunifTanjim/nui.nvim',
+        'https://github.com/rcarriga/nvim-notify',
+        'https://github.com/folke/noice.nvim',
+    })
     vim.o.lazyredraw = false
     require("noice").setup()
 end)

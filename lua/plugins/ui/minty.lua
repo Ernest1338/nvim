@@ -1,6 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "nvzone/minty", depends = { "nvzone/volt" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/nvzone/volt',
+        'https://github.com/nvzone/minty',
+    })
     -- NOTE: lua require("minty.huefy").open()
 end)

@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("Ernest1338/training.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/Ernest1338/training.nvim' })
     require("training").setup()
 end)

@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("Bekaboo/dropbar.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/Bekaboo/dropbar.nvim' })
     require("dropbar").setup()
 end)

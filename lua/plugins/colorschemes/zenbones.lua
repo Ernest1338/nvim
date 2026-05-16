@@ -1,6 +1,5 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add({ source = "zenbones-theme/zenbones.nvim", depends = { "rktjmp/lush.nvim" } })
-    vim.cmd("colorscheme zenbones")
-end)
+vim.pack.add({
+    'https://github.com/rktjmp/lush.nvim',
+    'https://github.com/zenbones-theme/zenbones.nvim',
+})
+vim.cmd("colorscheme zenbones")

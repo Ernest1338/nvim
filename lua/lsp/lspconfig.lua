@@ -1,4 +1,4 @@
-MiniDeps.add("neovim/nvim-lspconfig")
+vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
 local lspconfig = require("lspconfig")
 
 local on_attach = function(client, bufnr)
@@ -31,7 +31,7 @@ local servers = {
     lua_ls = {
         Lua = {
             diagnostics = {
-                globals = { "vim", "jit", "MiniPick", "MiniDeps", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion" },
+                globals = { "vim", "jit", "MiniPick", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion" },
             },
         },
     },

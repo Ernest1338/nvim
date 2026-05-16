@@ -1,7 +1,8 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "azratul/live-share.nvim", depends = { "jbyuki/instant.nvim" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/jbyuki/instant.nvim',
+        'https://github.com/azratul/live-share.nvim',
+    })
     require("live-share").setup({
         port_internal = 8765,
         max_attempts = 40, -- 10 seconds

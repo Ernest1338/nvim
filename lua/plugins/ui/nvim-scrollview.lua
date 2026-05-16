@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("dstein64/nvim-scrollview")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/dstein64/nvim-scrollview' })
 end)

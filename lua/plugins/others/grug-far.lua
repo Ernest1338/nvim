@@ -1,7 +1,5 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("MagicDuck/grug-far.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/MagicDuck/grug-far.nvim' })
     require("grug-far").setup({
         -- debounceMs = 0
     })

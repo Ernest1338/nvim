@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("rafamadriz/friendly-snippets")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/rafamadriz/friendly-snippets' })
 end)

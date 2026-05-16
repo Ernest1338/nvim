@@ -1,6 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "nvim-telescope/telescope.nvim", depends = { "nvim-lua/plenary.nvim" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/nvim-lua/plenary.nvim',
+        'https://github.com/nvim-telescope/telescope.nvim',
+    })
     require("telescope").setup()
 end)

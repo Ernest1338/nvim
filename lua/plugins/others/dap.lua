@@ -1,5 +1,8 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "rcarriga/nvim-dap-ui", depends = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "igorlfs/nvim-dap-view" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/mfussenegger/nvim-dap',
+        'https://github.com/nvim-neotest/nvim-nio',
+        'https://github.com/igorlfs/nvim-dap-view',
+        'https://github.com/rcarriga/nvim-dap-ui',
+    })
 end)

@@ -11,7 +11,7 @@ local servers = {
                     library = { vim.env.VIMRUNTIME, "${3rd}/love2d/library" }
                 },
                 diagnostics = {
-                    globals = { "vim", "jit", "MiniPick", "MiniDeps", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion", "Snacks" },
+                    globals = { "vim", "jit", "MiniPick", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion", "Snacks" },
                 }
             }
         }

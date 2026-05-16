@@ -1,6 +1,2 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add("stevearc/oil.nvim")
-    require("oil").setup()
-end)
+vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
+require("oil").setup()

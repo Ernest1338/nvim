@@ -1,5 +1,6 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "kristijanhusak/vim-dadbod-ui", depends = { "tpope/vim-dadbod" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/tpope/vim-dadbod',
+        'https://github.com/kristijanhusak/vim-dadbod-ui',
+    })
 end)

@@ -1,5 +1,3 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("honza/vim-snippets")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/honza/vim-snippets' })
 end)

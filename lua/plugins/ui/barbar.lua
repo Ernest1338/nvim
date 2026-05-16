@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("romgrk/barbar.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/romgrk/barbar.nvim' })
     require("barbar").setup()
 end)

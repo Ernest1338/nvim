@@ -1,6 +1,4 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add("lukas-reineke/indent-blankline.nvim")
+vim.schedule(function()
+    vim.pack.add({ 'https://github.com/lukas-reineke/indent-blankline.nvim' })
     require("ibl").setup()
 end)

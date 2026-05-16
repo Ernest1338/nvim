@@ -6,10 +6,12 @@ TODO:
 ]]
 --
 
-local now, later = MiniDeps.now, MiniDeps.later
+vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
+
 local map = vim.keymap.set
 
-now(function()
+-- "now" equivalent: run immediately after vim.pack.add
+do
     require("mini.tabline").setup({
         format = function(buf_id, label)
             local suffix = vim.bo[buf_id].modified and '• ' or ' '
@@ -66,9 +68,10 @@ now(function()
     --     autoread = true,
     --     directory = vim.fn.stdpath("state") .. "/mini-sessions/"
     -- })
-end)
+end
 
-later(function()
+-- "later" equivalent: deferred loading via vim.schedule
+vim.schedule(function()
     require("mini.icons").setup()
     MiniIcons.tweak_lsp_kind("prepend")
     MiniIcons.mock_nvim_web_devicons()

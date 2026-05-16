@@ -1,6 +1,2 @@
-local add, now = MiniDeps.add, MiniDeps.now
-
-now(function()
-    add("sainnhe/everforest")
-    vim.cmd("colorscheme everforest")
-end)
+vim.pack.add({ 'https://github.com/sainnhe/everforest' })
+vim.cmd("colorscheme everforest")

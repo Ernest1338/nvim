@@ -1,23 +1,20 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    local function build_fff(params)
-        vim.notify('Building fff.nvim', vim.log.levels.INFO)
-        local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = params.path }):wait()
-        if obj.code == 0 then
-            vim.notify('Building fff.nvim done', vim.log.levels.INFO)
-        else
-            vim.notify('Building fff.nvim failed', vim.log.levels.ERROR)
+vim.schedule(function()
+    vim.api.nvim_create_autocmd('PackChanged', { callback = function(ev)
+        local name, kind = ev.data.spec.name, ev.data.kind
+        if name == 'fff.nvim' and (kind == 'install' or kind == 'update') then
+            if not ev.data.active then vim.cmd.packadd('fff.nvim') end
+            vim.notify('Building fff.nvim', vim.log.levels.INFO)
+            local path = vim.fn.stdpath('data') .. '/site/pack/nvim/opt/fff.nvim'
+            local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = path }):wait()
+            if obj.code == 0 then
+                vim.notify('Building fff.nvim done', vim.log.levels.INFO)
+            else
+                vim.notify('Building fff.nvim failed', vim.log.levels.ERROR)
+            end
         end
-    end
+    end })
 
-    add({
-        source = "dmtrKovalenko/fff.nvim",
-        hooks = {
-            post_install = build_fff,
-            post_checkout = build_fff,
-        },
-    })
+    vim.pack.add({ 'https://github.com/dmtrKovalenko/fff.nvim' })
 
     require("fff").setup()
 end)

@@ -1,6 +1,7 @@
-local add, later = MiniDeps.add, MiniDeps.later
-
-later(function()
-    add({ source = "julienvincent/hunk.nvim", depends = { "MunifTanjim/nui.nvim" } })
+vim.schedule(function()
+    vim.pack.add({
+        'https://github.com/MunifTanjim/nui.nvim',
+        'https://github.com/julienvincent/hunk.nvim',
+    })
     require("hunk").setup()
 end)

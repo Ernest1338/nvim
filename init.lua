@@ -1,17 +1,6 @@
 -- enable the experimental lua-loader
 pcall(function() vim.loader.enable() end)
 
-local path_package = vim.fn.stdpath("data") .. "/site/"
-
--- Bootstrap mini if not already installed
-local mini_path = path_package .. "pack/deps/start/mini.nvim"
-if not vim.uv.fs_stat(mini_path) then
-    vim.cmd('echo "Installing `mini.nvim`" | redraw')
-    local clone_cmd = { 'git', 'clone', '--filter=blob:none', 'https://github.com/nvim-mini/mini.nvim', mini_path }
-    vim.fn.system(clone_cmd)
-    vim.cmd('packadd mini.nvim | helptags ALL')
-end
-
 -- disable some builtin plugins
 local builtin_plugs = {
     "gzip",
@@ -39,11 +28,15 @@ end
 require("core.configs")
 require("core.mappings")
 
-require("mini.deps").setup({ job = { n_threads = 10 }, path = { package = path_package } })
 require("plugins")
 
+-- Update command
+vim.api.nvim_create_user_command('PackUpdate', function()
+  vim.pack.update()
+end, {})
+
 -- LSP setup (choose either one of those)
-MiniDeps.later(function()
+vim.schedule(function()
     require("lsp.custom-setup")
     -- require("lsp.lspconfig")
 end)
