@@ -303,6 +303,10 @@ vim.schedule(function()
     --     }
     -- })
 
+    require("mini.input").setup()
+    -- require("mini.input").setup({ handlers = { view = require("mini.input").gen_view.uiline() } })
+    -- require("mini.input").setup({ handlers = { view = require("mini.input").gen_view.virtual() } })
+
     -- local miniclue = require('mini.clue')
     -- miniclue.setup({
     --     triggers = {
