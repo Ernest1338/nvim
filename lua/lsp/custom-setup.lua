@@ -11,7 +11,7 @@ local servers = {
                     library = { vim.env.VIMRUNTIME, "${3rd}/love2d/library" }
                 },
                 diagnostics = {
-                    globals = { "vim", "jit", "MiniPick", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion", "Snacks" },
+                    globals = { "vim", "jit", "MiniPick", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion", "MiniInput", "Snacks" },
                 }
             }
         }
@@ -98,19 +98,28 @@ end
 
 vim.api.nvim_create_user_command("LspStop", function()
     local current_buf = vim.api.nvim_get_current_buf()
-    vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = current_buf }))
+    local clients = vim.lsp.get_clients({ bufnr = current_buf })
+    for _, client in ipairs(clients) do
+        -- true means "force kill"
+        client:stop(true)
+    end
 end, {
     desc = "Manually stops the given language client(s)",
-    nargs = "?",
+    -- nargs = "?",
+    nargs = 0,
 })
 
 vim.api.nvim_create_user_command("LspRestart", function()
     local current_buf = vim.api.nvim_get_current_buf()
-    vim.lsp.stop_client(vim.lsp.get_clients({ bufnr = current_buf }))
+    local clients = vim.lsp.get_clients({ bufnr = current_buf })
+    for _, client in ipairs(clients) do
+        client:stop(true)
+    end
     vim.cmd("edit")
 end, {
     desc = "Restart LSP connected to current buffer",
-    nargs = "?",
+    -- nargs = "?",
+    nargs = 0,
 })
 
 vim.api.nvim_create_user_command("LspInfo", function()

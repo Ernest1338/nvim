@@ -31,7 +31,7 @@ local servers = {
     lua_ls = {
         Lua = {
             diagnostics = {
-                globals = { "vim", "jit", "MiniPick", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion" },
+                globals = { "vim", "jit", "MiniPick", "MiniFiles", "MiniIcons", "MiniTabline", "MiniCompletion", "MiniInput" },
             },
         },
     },
