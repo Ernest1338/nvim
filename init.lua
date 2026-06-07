@@ -1,6 +1,8 @@
 -- enable the experimental lua-loader
 pcall(function() vim.loader.enable() end)
 
+require("vim._core.ui2").enable({})
+
 -- disable some builtin plugins
 local builtin_plugs = {
     "gzip",
