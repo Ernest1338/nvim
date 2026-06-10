@@ -59,7 +59,7 @@ do
     local statusline = require("mini.statusline")
     statusline.setup({
         content = {
-            -- FIXME: workaround for termplug when process exits
+            -- workaround for termplug when process exits
             inactive = statusline.active
         }
     })
