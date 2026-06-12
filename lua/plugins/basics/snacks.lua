@@ -52,3 +52,11 @@ vim.schedule(function()
 
     require("snacks.words").enable()
 end)
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "snacks_input", "snacks_picker_input" },
+    callback = function()
+        -- Disable mini.completion for this specific buffer
+        vim.b.minicompletion_disable = true
+    end,
+})
